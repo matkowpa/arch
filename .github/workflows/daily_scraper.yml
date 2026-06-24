@@ -1,0 +1,68 @@
+name: Daily Tender Scraper
+
+# ── Triggers ──────────────────────────────────────────────────────────────────
+on:
+  # Run automatically every day at 05:00 UTC
+  schedule:
+    - cron: '0 5 * * *'
+
+  # Allow manual runs from the GitHub Actions UI with an optional override
+  workflow_dispatch:
+    inputs:
+      lookback_days:
+        description: 'Days to look back for tenders (default: 30)'
+        required: false
+        default: '30'
+        type: string
+
+# ── Repository write permissions (needed to commit data + docs) ───────────────
+permissions:
+  contents: write
+
+# ── Jobs ──────────────────────────────────────────────────────────────────────
+jobs:
+  scrape:
+    name: Scrape & Publish Dashboard
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      # 1. Check out the full repo (depth 1 is enough)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # 2. Set up Python 3.12 with pip caching for faster subsequent runs
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      # 3. Install all scraper dependencies
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 4. Run the scraper
+      #    LOOKBACK_DAYS falls back to 30 for scheduled runs
+      - name: Run scraper
+        env:
+          LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '30' }}
+        run: python scraper.py
+
+      # 5. Commit any new data/ and docs/ files back to the repo.
+      #    The "[skip ci]" trailer prevents this commit from re-triggering the workflow.
+      - name: Commit and push results
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ docs/
+          if git diff --staged --quiet; then
+            echo "No new tender data to commit."
+          else
+            git commit -m "chore(scraper): daily report $(date -u +%Y-%m-%d) [skip ci]"
+            git push
+          fi

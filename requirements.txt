@@ -1,0 +1,10 @@
+# Polish Architecture Tender Scraper – Dependencies
+# Pin to compatible ranges; tested with Python 3.12
+
+feedparser>=6.0.11,<7
+requests>=2.31.0,<3
+beautifulsoup4>=4.12.3,<5
+lxml>=5.2.0,<6
+duckduckgo-search>=6.1.0,<7
+python-dateutil>=2.9.0,<3
+Jinja2>=3.1.4,<4
