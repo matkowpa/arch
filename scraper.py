@@ -260,6 +260,7 @@ def fetch_ddg(queries: list[str]) -> list[dict]:
                     results.append(
                         {
                             "id": _make_id(url),
+                            "proc_id": None,
                             "title": title,
                             "entity": "",
                             "publication_date": pub_date,
@@ -325,9 +326,14 @@ def _fetch_ted_rss(cpv: str, results: list[dict]) -> None:
             if m:
                 entity = m.group(1).strip()[:200]
                 break
+        ted_pub_num = None
+        m_ted = re.search(r'/notice/([^/?#]+)', link)
+        if m_ted:
+            ted_pub_num = m_ted.group(1)
         results.append(
             {
                 "id": _make_id(link),
+                "proc_id": ted_pub_num,
                 "title": title,
                 "entity": entity,
                 "publication_date": pub_date,
@@ -459,6 +465,7 @@ def _extract_bzp_item(item: dict, results: list[dict]) -> None:
     results.append(
         {
             "id": _make_id(url),
+            "proc_id": notice_id or None,
             "title": title,
             "entity": entity,
             "publication_date": pub_date,
@@ -533,9 +540,12 @@ def _pzp_search(term: str, results: list[dict], search_url: str) -> None:
         if pub_date and not _within_window(pub_date):
             continue
 
+        m_pzp = re.search(r'/transakcje/(\d+)', full_url)
+        pzp_id = m_pzp.group(1) if m_pzp else None
         results.append(
             {
                 "id": _make_id(full_url),
+                "proc_id": pzp_id,
                 "title": title,
                 "entity": "",
                 "publication_date": pub_date,

@@ -544,6 +544,10 @@
         <span style="font-weight:500;">Zamawiający:</span>
         <span style="margin-left:4px;">${entityHtml}</span>
       </p>
+      ${t.proc_id ? `<p style="font-size:10px; color:var(--mid); margin:4px 0 0;">
+        <span style="font-weight:500; color:var(--light);">Nr postępowania:</span>
+        <span style="margin-left:4px; font-family:'Courier New',Courier,monospace; font-size:10px; color:var(--mid);">${esc(t.proc_id)}</span>
+      </p>` : ''}
       <div style="margin-top:11px; padding-top:11px; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; gap:18px;">
         <span style="font-size:10px; color:var(--light);">
           Opublikowano:&nbsp;<span style="color:var(--mid); font-weight:500;">${pub}</span>
