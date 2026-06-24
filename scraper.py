@@ -8,7 +8,7 @@ from Polish and EU procurement portals.
 Sources
 -------
 1. DuckDuckGo full-text search  – no API key required, broad coverage
-2. TED (Tenders Electronic Daily) – EU procurement portal REST API
+2. TED (Tenders Electronic Daily) – EU procurement portal RSS feeds (feedparser)
 3. ezamowienia.gov.pl (BZP)       – Polish national procurement platform API
 4. platformazakupowa.pl           – popular Polish e-procurement platform (scraper)
 
@@ -39,7 +39,7 @@ from pathlib import Path
 from typing import Optional
 from urllib.parse import urljoin
 
-import feedparser  # noqa: F401  (imported for future RSS source extensions)
+import feedparser
 import requests
 from bs4 import BeautifulSoup
 from dateutil import parser as dateutil_parser
@@ -277,72 +277,65 @@ def fetch_ddg(queries: list[str]) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# Source 2: TED (Tenders Electronic Daily) EU REST API
+# Source 2: TED (Tenders Electronic Daily) – RSS feeds
 # ---------------------------------------------------------------------------
 
-_TED_API = "https://api.ted.europa.eu/v3/notices/search"
+_TED_RSS_BASE = "https://ted.europa.eu/TED/search/result.do"
 
 
 def fetch_ted() -> list[dict]:
-    """Fetch architecture-related tenders in Poland from the TED v3 API (POST)."""
+    """Fetch architecture-related tenders in Poland via TED CPV RSS feeds."""
     results: list[dict] = []
-    cpv_list = ",".join(_ARCH_CPV_CODES)
-    cutoff_str = CUTOFF_DATE.strftime("%Y%m%d")
-    # TED v3 Expert Search syntax; API requires POST with JSON body
-    query = (
-        f"(PC=[{cpv_list}] OR TE~architektura OR TE~\"projekt wykonawczy\") "
-        f"AND CY=PL AND PD>=[{cutoff_str}]"
-    )
-    body = {
-        "q": query,
-        "fields": ["notice-number", "publication-date", "title", "organisation-name", "deadline-date"],
-        "pageSize": 100,
-        "page": 1,
-        "scope": 3,
-        "sortField": "publication-date",
-        "sortOrder": "desc",
-    }
-    try:
-        log.info("[TED] Fetching EU tenders (CPV 712xx / 7132x, Poland)")
-        time.sleep(random.uniform(*_DELAY_RANGE))
-        resp = requests.post(
-            _TED_API,
-            json=body,
-            headers={
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "User-Agent": random.choice(_USER_AGENTS),
-            },
-            timeout=_REQUEST_TIMEOUT,
-        )
-        resp.raise_for_status()
-        data = resp.json()
-        for n in data.get("notices", []):
-            notice_num = n.get("notice-number", "")
-            pub_date = _parse_date(n.get("publication-date"))
-            if not _within_window(pub_date):
-                continue
-            url = f"https://ted.europa.eu/en/notice/{notice_num}"
-            titles = n.get("title") or {}
-            title = (titles.get("PL") or titles.get("EN") or "")[:200]
-            orgs = n.get("organisation-name") or {}
-            entity = (orgs.get("PL") or orgs.get("EN") or "")[:200]
-            results.append(
-                {
-                    "id": _make_id(url),
-                    "title": title,
-                    "entity": entity,
-                    "publication_date": pub_date,
-                    "deadline": _parse_date(n.get("deadline-date")),
-                    "url": url,
-                    "source": "TED (EU)",
-                    "sector": _classify_sector(title, entity),
-                }
-            )
-    except Exception as exc:
-        log.warning("[TED] API call failed: %s", exc)
+    for cpv in _ARCH_CPV_CODES[:4]:  # limit to 4 CPV codes to avoid overloading
+        try:
+            _fetch_ted_rss(cpv, results)
+        except Exception as exc:
+            log.warning("[TED] RSS CPV %s failed: %s", cpv, exc)
     log.info("[TED] Collected %d results", len(results))
     return results
+
+
+def _fetch_ted_rss(cpv: str, results: list[dict]) -> None:
+    url = (
+        f"{_TED_RSS_BASE}?sortColumn=0&countryCode=POL"
+        f"&cpvCodes={cpv}&orderType=YEAR_DESC&format=RSS"
+    )
+    time.sleep(random.uniform(*_DELAY_RANGE))
+    feed = feedparser.parse(url, request_headers=_random_headers())
+    log.debug("[TED] RSS CPV %s: %d entries", cpv, len(feed.entries))
+    for entry in feed.entries:
+        link = entry.get("link", "").strip()
+        if not link:
+            continue
+        pub_date = _parse_date(entry.get("published") or entry.get("updated"))
+        if not _within_window(pub_date):
+            continue
+        title = entry.get("title", "").strip()
+        summary = entry.get("summary", "")
+        # Try to extract buyer name from RSS summary
+        entity = ""
+        for pattern in [
+            r"Authority[:\s]+([^\n|<]+)",
+            r"Contracting authority[:\s]+([^\n|<]+)",
+            r"Organisation[:\s]+([^\n|<]+)",
+            r"Zamawiający[:\s]+([^\n|<]+)",
+        ]:
+            m = re.search(pattern, summary, re.IGNORECASE)
+            if m:
+                entity = m.group(1).strip()[:200]
+                break
+        results.append(
+            {
+                "id": _make_id(link),
+                "title": title,
+                "entity": entity,
+                "publication_date": pub_date,
+                "deadline": None,
+                "url": link,
+                "source": "TED (EU)",
+                "sector": _classify_sector(title, entity),
+            }
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -587,16 +580,35 @@ def deduplicate(
 
 def save_daily_report(tenders: list[dict]) -> None:
     today_str = TODAY.isoformat()
+
+    # Merge with any existing report for today – never discard previously found data
+    existing: list[dict] = []
+    for candidate in (REPORTS_DIR / f"{today_str}.json", DOCS_REPORTS_DIR / f"{today_str}.json"):
+        if candidate.exists():
+            try:
+                existing = json.loads(candidate.read_text(encoding="utf-8")).get("tenders", [])
+                break
+            except Exception:
+                pass
+
+    # New tenders take priority; re-append existing ones not in the fresh batch
+    new_ids = {t["id"] for t in tenders}
+    retained = [t for t in existing if t["id"] not in new_ids]
+    merged = tenders + retained
+
     report = {
         "date": today_str,
-        "count": len(tenders),
+        "count": len(merged),
         "generated_at": datetime.now(tz=timezone.utc).isoformat(),
-        "tenders": tenders,
+        "tenders": merged,
     }
     payload = json.dumps(report, indent=2, ensure_ascii=False)
     (REPORTS_DIR / f"{today_str}.json").write_text(payload, encoding="utf-8")
     (DOCS_REPORTS_DIR / f"{today_str}.json").write_text(payload, encoding="utf-8")
-    log.info("Daily report saved: %s.json (%d tenders)", today_str, len(tenders))
+    log.info(
+        "Daily report saved: %s.json (%d new + %d retained = %d total)",
+        today_str, len(tenders), len(retained), len(merged),
+    )
 
 
 def _build_manifest() -> list[dict]:
