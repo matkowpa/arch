@@ -8,22 +8,28 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
     <style>
         :root {
-            --dark:    #1a1818;
-            --mid:     #5a524a;
-            --light:   #9a908a;
-            --paper:   #f5f2ed;
-            --border:  #e0dbd2;
-            --white:   #ffffff;
-            --c-public:     #4a7ab5;
+            --dark: #1a1818;
+            --mid: #5a524a;
+            --light: #9a908a;
+            --paper: #f5f2ed;
+            --border: #e0dbd2;
+            --white: #ffffff;
+            --c-public: #4a7ab5;
             --c-industrial: #b8743a;
-            --c-soe:        #7c5cbf;
-            --c-other:      #9a908a;
+            --c-soe: #7c5cbf;
+            --c-other: #9a908a;
         }
 
-        html, body { height: 100%; margin: 0; }
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
 
         body {
             font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
@@ -32,364 +38,497 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+        .font-display {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+        }
 
         /* Tender card */
-        .tender-card { transition: box-shadow 0.15s ease; }
-        .tender-card:hover { box-shadow: 0 6px 28px rgba(26,24,24,0.09); }
+        .tender-card {
+            transition: box-shadow 0.15s ease;
+        }
+
+        .tender-card:hover {
+            box-shadow: 0 6px 28px rgba(26, 24, 24, 0.09);
+        }
 
         /* Sector left border */
-        .sector-public     { border-left: 3px solid var(--c-public); }
-        .sector-industrial { border-left: 3px solid var(--c-industrial); }
-        .sector-soe        { border-left: 3px solid var(--c-soe); }
-        .sector-other      { border-left: 3px solid var(--c-other); }
+        .sector-public {
+            border-left: 3px solid var(--c-public);
+        }
+
+        .sector-industrial {
+            border-left: 3px solid var(--c-industrial);
+        }
+
+        .sector-soe {
+            border-left: 3px solid var(--c-soe);
+        }
+
+        .sector-other {
+            border-left: 3px solid var(--c-other);
+        }
 
         /* Sidebar date items */
         .sidebar-item {
-            display: block; width: 100%; text-align: left;
-            padding: 7px 10px; font-size: 11px; letter-spacing: 0.04em;
-            margin-bottom: 2px; border: none; background: none;
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 7px 10px;
+            font-size: 11px;
+            letter-spacing: 0.04em;
+            margin-bottom: 2px;
+            border: none;
+            background: none;
             transition: background 0.12s ease, color 0.12s ease;
-            color: var(--mid); cursor: pointer;
+            color: var(--mid);
+            cursor: pointer;
         }
-        .sidebar-item.active  { background: var(--dark); color: var(--white); }
-        .sidebar-item:not(.active):hover { background: var(--border); color: var(--dark); }
+
+        .sidebar-item.active {
+            background: var(--dark);
+            color: var(--white);
+        }
+
+        .sidebar-item:not(.active):hover {
+            background: var(--border);
+            color: var(--dark);
+        }
 
         /* Filter tabs */
         .filter-tab {
-            cursor: pointer; border: none; background: none;
-            padding: 0 0 12px 0; font-size: 10px; font-weight: 600;
-            letter-spacing: 0.14em; text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0 0 12px 0;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
             border-bottom: 2px solid transparent;
             transition: color 0.12s ease, border-color 0.12s ease;
-            color: var(--light); white-space: nowrap;
+            color: var(--light);
+            white-space: nowrap;
         }
-        .filter-tab.active { color: var(--dark); border-bottom-color: var(--dark); }
-        .filter-tab:not(.active):hover { color: var(--mid); }
+
+        .filter-tab.active {
+            color: var(--dark);
+            border-bottom-color: var(--dark);
+        }
+
+        .filter-tab:not(.active):hover {
+            color: var(--mid);
+        }
 
         /* CTA outlined button */
         .btn-open {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 7px 14px; border: 1px solid var(--dark);
-            color: var(--dark); font-size: 10px; font-weight: 600;
-            letter-spacing: 0.1em; text-transform: uppercase;
-            text-decoration: none; white-space: nowrap; flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            border: 1px solid var(--dark);
+            color: var(--dark);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
             transition: background 0.12s ease, color 0.12s ease;
         }
-        .btn-open:hover { background: var(--dark); color: var(--white); }
+
+        .btn-open:hover {
+            background: var(--dark);
+            color: var(--white);
+        }
 
         /* Loading spinner */
-        @keyframes _spin { to { transform: rotate(360deg); } }
-        .spin { animation: _spin 0.75s linear infinite; }
+        @keyframes _spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spin {
+            animation: _spin 0.75s linear infinite;
+        }
 
         /* Keyword highlight */
-        mark { background: #ede3cf; color: var(--dark); border-radius: 1px; padding: 0 1px; }
+        mark {
+            background: #ede3cf;
+            color: var(--dark);
+            border-radius: 1px;
+            padding: 0 1px;
+        }
 
         /* Scrollbar */
-        ::-webkit-scrollbar { width: 3px; height: 3px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 9999px; }
+        ::-webkit-scrollbar {
+            width: 3px;
+            height: 3px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 9999px;
+        }
 
         /* Search */
-        #search-input::placeholder { color: rgba(255,255,255,0.3); }
-        #search-input:focus { outline: none; border-color: rgba(255,255,255,0.4) !important; }
+        #search-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        #search-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.4) !important;
+        }
 
         /* Responsive */
-        @media (max-width: 1023px) { .sidebar-hide { display: none !important; } }
-        @media (min-width: 640px)  { .sm-show { display: block !important; } }
-        @media (min-width: 1024px) { .lg-hide { display: none !important; } }
+        @media (max-width: 1023px) {
+            .sidebar-hide {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .sm-show {
+                display: block !important;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .lg-hide {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
 <body class="h-full">
-<div id="app" style="display:flex; flex-direction:column; height:100vh; overflow:hidden;">
+    <div id="app" style="display:flex; flex-direction:column; height:100vh; overflow:hidden;">
 
-    <!-- ══════════════════════════════════════════════════
+        <!-- ══════════════════════════════════════════════════
          TOP BAR — dark charcoal
     ══════════════════════════════════════════════════ -->
-    <header style="background:var(--dark); flex-shrink:0; z-index:10;">
+        <header style="background:var(--dark); flex-shrink:0; z-index:10;">
 
-        <!-- Brand row -->
-        <div style="padding:18px 32px 14px; display:flex; align-items:center; justify-content:space-between; gap:16px; border-bottom:1px solid rgba(255,255,255,0.07);">
-            <div>
-                <div class="font-display" style="font-size:1.5rem; font-weight:600; color:#fff; letter-spacing:0.12em; text-transform:uppercase; line-height:1;">
-                    Przetargi PL
-                </div>
-                <div style="font-size:9px; color:rgba(255,255,255,0.35); letter-spacing:0.22em; text-transform:uppercase; margin-top:4px;">
-                    Architektura &amp; Projekty Wykonawcze
-                </div>
-            </div>
-            <div style="display:flex; align-items:center; gap:20px;">
-                <!-- Date + count (sm+) -->
-                <div style="text-align:right; display:none;" class="sm-show">
-                    <div id="header-date" style="font-size:11px; color:rgba(255,255,255,0.8); letter-spacing:0.08em; text-transform:uppercase; font-weight:500;">
-                        Raport: 2026-06-24
+            <!-- Brand row -->
+            <div
+                style="padding:18px 32px 14px; display:flex; align-items:center; justify-content:space-between; gap:16px; border-bottom:1px solid rgba(255,255,255,0.07);">
+                <div>
+                    <div class="font-display"
+                        style="font-size:1.5rem; font-weight:600; color:#fff; letter-spacing:0.12em; text-transform:uppercase; line-height:1;">
+                        Przetargi PL
                     </div>
-                    <div id="header-count" style="font-size:10px; color:rgba(255,255,255,0.35); margin-top:1px;"></div>
+                    <div
+                        style="font-size:9px; color:rgba(255,255,255,0.35); letter-spacing:0.22em; text-transform:uppercase; margin-top:4px;">
+                        Architektura &amp; Projekty Wykonawcze
+                    </div>
                 </div>
-                <!-- Mobile date select -->
-                <select id="mobile-date-select" class="lg-hide"
-                    style="font-size:11px; padding:6px 8px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#fff; letter-spacing:0.04em;">
-                </select>
-                <!-- Search -->
-                <div style="position:relative;">
-                    <svg style="position:absolute; left:10px; top:50%; transform:translateY(-50%); width:11px; height:11px; color:rgba(255,255,255,0.35); pointer-events:none;"
-                         fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607z"/>
-                    </svg>
-                    <input id="search-input" type="search" placeholder="Szukaj przetargu…"
-                        style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13); color:#fff; font-size:11px; letter-spacing:0.04em; padding:7px 12px 7px 30px; width:200px;" />
+                <div style="display:flex; align-items:center; gap:20px;">
+                    <!-- Date + count (sm+) -->
+                    <div style="text-align:right; display:none;" class="sm-show">
+                        <div id="header-date"
+                            style="font-size:11px; color:rgba(255,255,255,0.8); letter-spacing:0.08em; text-transform:uppercase; font-weight:500;">
+                            Raport: 2026-06-24
+                        </div>
+                        <div id="header-count" style="font-size:10px; color:rgba(255,255,255,0.35); margin-top:1px;">
+                        </div>
+                    </div>
+                    <!-- Mobile date select -->
+                    <select id="mobile-date-select" class="lg-hide"
+                        style="font-size:11px; padding:6px 8px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#fff; letter-spacing:0.04em;">
+                    </select>
+                    <!-- Search -->
+                    <div style="position:relative;">
+                        <svg style="position:absolute; left:10px; top:50%; transform:translateY(-50%); width:11px; height:11px; color:rgba(255,255,255,0.35); pointer-events:none;"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607z" />
+                        </svg>
+                        <input id="search-input" type="search" placeholder="Szukaj przetargu…"
+                            style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13); color:#fff; font-size:11px; letter-spacing:0.04em; padding:7px 12px 7px 30px; width:200px;" />
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Stats strip -->
-        <div style="display:grid; grid-template-columns:repeat(4,1fr);">
-            <div style="padding:14px 32px; border-right:1px solid rgba(255,255,255,0.06);">
-                <div style="font-size:9px; color:rgba(255,255,255,0.35); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:5px;">Wszystkie</div>
-                <div id="stat-all" class="font-display" style="font-size:2rem; font-weight:600; color:#fff; line-height:1;">–</div>
+            <!-- Stats strip -->
+            <div style="display:grid; grid-template-columns:repeat(4,1fr);">
+                <div style="padding:14px 32px; border-right:1px solid rgba(255,255,255,0.06);">
+                    <div
+                        style="font-size:9px; color:rgba(255,255,255,0.35); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:5px;">
+                        Wszystkie</div>
+                    <div id="stat-all" class="font-display"
+                        style="font-size:2rem; font-weight:600; color:#fff; line-height:1;">–</div>
+                </div>
+                <div style="padding:14px 32px; border-right:1px solid rgba(255,255,255,0.06);">
+                    <div
+                        style="font-size:9px; color:rgba(255,255,255,0.35); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:5px;">
+                        Publiczny</div>
+                    <div id="stat-public" class="font-display"
+                        style="font-size:2rem; font-weight:600; color:var(--c-public); line-height:1;">–</div>
+                </div>
+                <div style="padding:14px 32px; border-right:1px solid rgba(255,255,255,0.06);">
+                    <div
+                        style="font-size:9px; color:rgba(255,255,255,0.35); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:5px;">
+                        Przemysłowy</div>
+                    <div id="stat-industrial" class="font-display"
+                        style="font-size:2rem; font-weight:600; color:var(--c-industrial); line-height:1;">–</div>
+                </div>
+                <div style="padding:14px 32px;">
+                    <div
+                        style="font-size:9px; color:rgba(255,255,255,0.35); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:5px;">
+                        SSP</div>
+                    <div id="stat-soe" class="font-display"
+                        style="font-size:2rem; font-weight:600; color:var(--c-soe); line-height:1;">–</div>
+                </div>
             </div>
-            <div style="padding:14px 32px; border-right:1px solid rgba(255,255,255,0.06);">
-                <div style="font-size:9px; color:rgba(255,255,255,0.35); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:5px;">Publiczny</div>
-                <div id="stat-public" class="font-display" style="font-size:2rem; font-weight:600; color:var(--c-public); line-height:1;">–</div>
-            </div>
-            <div style="padding:14px 32px; border-right:1px solid rgba(255,255,255,0.06);">
-                <div style="font-size:9px; color:rgba(255,255,255,0.35); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:5px;">Przemysłowy</div>
-                <div id="stat-industrial" class="font-display" style="font-size:2rem; font-weight:600; color:var(--c-industrial); line-height:1;">–</div>
-            </div>
-            <div style="padding:14px 32px;">
-                <div style="font-size:9px; color:rgba(255,255,255,0.35); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:5px;">SSP</div>
-                <div id="stat-soe" class="font-display" style="font-size:2rem; font-weight:600; color:var(--c-soe); line-height:1;">–</div>
-            </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- ══════════════════════════════════════════════════
+        <!-- ══════════════════════════════════════════════════
          BODY — sidebar + content
     ══════════════════════════════════════════════════ -->
-    <div style="display:flex; flex:1; overflow:hidden; min-height:0;">
+        <div style="display:flex; flex:1; overflow:hidden; min-height:0;">
 
-        <!-- SIDEBAR -->
-        <aside class="sidebar-hide"
-               style="background:var(--white); border-right:1px solid var(--border); width:210px; flex-shrink:0; display:flex; flex-direction:column; overflow:hidden;">
-            <div style="padding:18px 20px 12px; border-bottom:1px solid var(--border);">
-                <p style="font-size:9px; color:var(--light); letter-spacing:0.2em; text-transform:uppercase; font-weight:500; margin:0;">
-                    Historia Raportów
-                </p>
-            </div>
-            <nav id="sidebar-nav" style="flex:1; overflow-y:auto; padding:8px 10px 12px;"></nav>
-            <div style="padding:12px 20px; border-top:1px solid var(--border);">
-                <p style="font-size:9px; color:var(--light); margin:0 0 3px;">Wygenerowano</p>
-                <p style="font-size:10px; color:var(--mid); margin:0;">2026-06-24 09:02 UTC</p>
-            </div>
-        </aside>
-
-        <!-- CONTENT -->
-        <div style="flex:1; display:flex; flex-direction:column; overflow:hidden; min-width:0; background:var(--paper);">
-
-            <!-- Filter tabs bar -->
-            <div style="background:var(--white); border-bottom:1px solid var(--border); padding:0 32px; flex-shrink:0; overflow-x:auto;">
-                <div style="display:flex; gap:28px; align-items:flex-end;">
-                    <button class="filter-tab active" data-sector="all">Wszystkie
-                        <span id="tab-all" style="font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; opacity:0.5;"></span>
-                    </button>
-                    <button class="filter-tab" data-sector="public">Publiczny
-                        <span id="tab-public" style="font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; opacity:0.5;"></span>
-                    </button>
-                    <button class="filter-tab" data-sector="industrial">Przemysłowy
-                        <span id="tab-industrial" style="font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; opacity:0.5;"></span>
-                    </button>
-                    <button class="filter-tab" data-sector="soe">SSP
-                        <span id="tab-soe" style="font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; opacity:0.5;"></span>
-                    </button>
-                    <button class="filter-tab" data-sector="other">Inne
-                        <span id="tab-other" style="font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; opacity:0.5;"></span>
-                    </button>
+            <!-- SIDEBAR -->
+            <aside class="sidebar-hide"
+                style="background:var(--white); border-right:1px solid var(--border); width:210px; flex-shrink:0; display:flex; flex-direction:column; overflow:hidden;">
+                <div style="padding:18px 20px 12px; border-bottom:1px solid var(--border);">
+                    <p
+                        style="font-size:9px; color:var(--light); letter-spacing:0.2em; text-transform:uppercase; font-weight:500; margin:0;">
+                        Historia Raportów
+                    </p>
                 </div>
+                <nav id="sidebar-nav" style="flex:1; overflow-y:auto; padding:8px 10px 12px;"></nav>
+                <div style="padding:12px 20px; border-top:1px solid var(--border);">
+                    <p style="font-size:9px; color:var(--light); margin:0 0 3px;">Wygenerowano</p>
+                    <p style="font-size:10px; color:var(--mid); margin:0;">2026-06-24 09:09 UTC</p>
+                </div>
+            </aside>
+
+            <!-- CONTENT -->
+            <div
+                style="flex:1; display:flex; flex-direction:column; overflow:hidden; min-width:0; background:var(--paper);">
+
+                <!-- Filter tabs bar -->
+                <div
+                    style="background:var(--white); border-bottom:1px solid var(--border); padding:0 32px; flex-shrink:0; overflow-x:auto;">
+                    <div style="display:flex; gap:28px; align-items:flex-end;">
+                        <button class="filter-tab active" data-sector="all">Wszystkie
+                            <span id="tab-all"
+                                style="font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; opacity:0.5;"></span>
+                        </button>
+                        <button class="filter-tab" data-sector="public">Publiczny
+                            <span id="tab-public"
+                                style="font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; opacity:0.5;"></span>
+                        </button>
+                        <button class="filter-tab" data-sector="industrial">Przemysłowy
+                            <span id="tab-industrial"
+                                style="font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; opacity:0.5;"></span>
+                        </button>
+                        <button class="filter-tab" data-sector="soe">SSP
+                            <span id="tab-soe"
+                                style="font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; opacity:0.5;"></span>
+                        </button>
+                        <button class="filter-tab" data-sector="other">Inne
+                            <span id="tab-other"
+                                style="font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; opacity:0.5;"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Scrollable tenders area -->
+                <main style="flex:1; overflow-y:auto; padding:24px 28px;">
+                    <!-- Loading -->
+                    <div id="loading-state"
+                        style="display:none; flex-direction:column; align-items:center; justify-content:center; padding:80px 0; gap:14px;">
+                        <div class="spin"
+                            style="width:26px; height:26px; border:2px solid var(--border); border-top-color:var(--dark); border-radius:50%;">
+                        </div>
+                        <p style="font-size:10px; color:var(--light); letter-spacing:0.14em; text-transform:uppercase;">
+                            Ładowanie…</p>
+                    </div>
+                    <!-- Tender list -->
+                    <div id="tenders-container"
+                        style="display:flex; flex-direction:column; gap:10px; max-width:900px; margin:0 auto;"></div>
+                    <!-- Empty state -->
+                    <div id="empty-state"
+                        style="display:none; flex-direction:column; align-items:center; justify-content:center; padding:80px 0; text-align:center;">
+                        <div style="font-size:32px; color:var(--border); margin-bottom:14px; line-height:1;">◻</div>
+                        <p
+                            style="font-size:10px; font-weight:600; color:var(--mid); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:6px;">
+                            Brak wyników</p>
+                        <p style="font-size:11px; color:var(--light);">Zmień filtry lub wyczyść wyszukiwanie.</p>
+                    </div>
+                </main>
             </div>
 
-            <!-- Scrollable tenders area -->
-            <main style="flex:1; overflow-y:auto; padding:24px 28px;">
-                <!-- Loading -->
-                <div id="loading-state" style="display:none; flex-direction:column; align-items:center; justify-content:center; padding:80px 0; gap:14px;">
-                    <div class="spin" style="width:26px; height:26px; border:2px solid var(--border); border-top-color:var(--dark); border-radius:50%;"></div>
-                    <p style="font-size:10px; color:var(--light); letter-spacing:0.14em; text-transform:uppercase;">Ładowanie…</p>
-                </div>
-                <!-- Tender list -->
-                <div id="tenders-container" style="display:flex; flex-direction:column; gap:10px; max-width:900px; margin:0 auto;"></div>
-                <!-- Empty state -->
-                <div id="empty-state" style="display:none; flex-direction:column; align-items:center; justify-content:center; padding:80px 0; text-align:center;">
-                    <div style="font-size:32px; color:var(--border); margin-bottom:14px; line-height:1;">◻</div>
-                    <p style="font-size:10px; font-weight:600; color:var(--mid); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:6px;">Brak wyników</p>
-                    <p style="font-size:11px; color:var(--light);">Zmień filtry lub wyczyść wyszukiwanie.</p>
-                </div>
-            </main>
         </div>
-
     </div>
-</div>
 
-<!-- ══════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════
      JAVASCRIPT — SPA logic
 ══════════════════════════════════════════════════ -->
-<script>
-    /* ── Server-side injected data ───────────────────── */
-    const MANIFEST    = [{&#34;date&#34;: &#34;2026-06-24&#34;, &#34;file&#34;: &#34;reports/2026-06-24.json&#34;}];
-    const INIT_REPORT = {&#34;date&#34;: &#34;2026-06-24&#34;, &#34;count&#34;: 13, &#34;generated_at&#34;: &#34;2026-06-24T08:42:37.071173+00:00&#34;, &#34;tenders&#34;: [{&#34;id&#34;: &#34;a1b2c3d4e5f60001&#34;, &#34;title&#34;: &#34;Projekt architektoniczny i wykonawczy centrum badawczo-rozwojowego KGHM Polska Miedz S.A. w Lubinie&#34;, &#34;entity&#34;: &#34;KGHM Polska Miedz S.A.&#34;, &#34;publication_date&#34;: &#34;2026-06-22&#34;, &#34;deadline&#34;: &#34;2026-07-28&#34;, &#34;url&#34;: &#34;https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-kghm-001&#34;, &#34;source&#34;: &#34;BZP (ezamowienia.gov.pl)&#34;, &#34;sector&#34;: &#34;soe&#34;}, {&#34;id&#34;: &#34;a1b2c3d4e5f60002&#34;, &#34;title&#34;: &#34;Dokumentacja projektowa budowlano-wykonawcza PGE Energetyka Kolejowa S.A.&#34;, &#34;entity&#34;: &#34;PGE Energetyka Kolejowa S.A.&#34;, &#34;publication_date&#34;: &#34;2026-06-21&#34;, &#34;deadline&#34;: &#34;2026-07-20&#34;, &#34;url&#34;: &#34;https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-pge-001&#34;, &#34;source&#34;: &#34;BZP (ezamowienia.gov.pl)&#34;, &#34;sector&#34;: &#34;soe&#34;}, {&#34;id&#34;: &#34;a1b2c3d4e5f60003&#34;, &#34;title&#34;: &#34;Projekt architektoniczny budynku biurowego PKP S.A. Warszawa Zachodnia&#34;, &#34;entity&#34;: &#34;PKP S.A. Centrum Realizacji Inwestycji&#34;, &#34;publication_date&#34;: &#34;2026-06-20&#34;, &#34;deadline&#34;: &#34;2026-07-15&#34;, &#34;url&#34;: &#34;https://platformazakupowa.pl/transakcje/123456&#34;, &#34;source&#34;: &#34;platformazakupowa.pl&#34;, &#34;sector&#34;: &#34;soe&#34;}, {&#34;id&#34;: &#34;a1b2c3d4e5f60004&#34;, &#34;title&#34;: &#34;Projekt wykonawczy hali magazynowo-logistycznej Tauron Dystrybucja&#34;, &#34;entity&#34;: &#34;Tauron Dystrybucja S.A.&#34;, &#34;publication_date&#34;: &#34;2026-06-19&#34;, &#34;deadline&#34;: &#34;2026-07-30&#34;, &#34;url&#34;: &#34;https://logintrade.net/rejestracja,oferty.html?id=789012&#34;, &#34;source&#34;: &#34;DuckDuckGo&#34;, &#34;sector&#34;: &#34;soe&#34;}, {&#34;id&#34;: &#34;a1b2c3d4e5f60005&#34;, &#34;title&#34;: &#34;Dokumentacja projektowa budynek uzytecznosci publicznej Urzad Miejski Wroclaw&#34;, &#34;entity&#34;: &#34;Gmina Wroclaw Urzad Miejski&#34;, &#34;publication_date&#34;: &#34;2026-06-23&#34;, &#34;deadline&#34;: &#34;2026-08-01&#34;, &#34;url&#34;: &#34;https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-wroc-001&#34;, &#34;source&#34;: &#34;BZP (ezamowienia.gov.pl)&#34;, &#34;sector&#34;: &#34;public&#34;}, {&#34;id&#34;: &#34;a1b2c3d4e5f60006&#34;, &#34;title&#34;: &#34;Projekt architektoniczny rozbudowy Szpitala Uniwersyteckiego w Krakowie&#34;, &#34;entity&#34;: &#34;Szpital Uniwersytecki w Krakowie&#34;, &#34;publication_date&#34;: &#34;2026-06-21&#34;, &#34;deadline&#34;: &#34;2026-07-25&#34;, &#34;url&#34;: &#34;https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-krak-001&#34;, &#34;source&#34;: &#34;BZP (ezamowienia.gov.pl)&#34;, &#34;sector&#34;: &#34;public&#34;}, {&#34;id&#34;: &#34;a1b2c3d4e5f60007&#34;, &#34;title&#34;: &#34;Projekt budowlano-wykonawczy biblioteki miejskiej Miasto Gdansk&#34;, &#34;entity&#34;: &#34;Gmina Miasto Gdansk&#34;, &#34;publication_date&#34;: &#34;2026-06-18&#34;, &#34;deadline&#34;: &#34;2026-07-22&#34;, &#34;url&#34;: &#34;https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-gdansk-001&#34;, &#34;source&#34;: &#34;BZP (ezamowienia.gov.pl)&#34;, &#34;sector&#34;: &#34;public&#34;}, {&#34;id&#34;: &#34;a1b2c3d4e5f60008&#34;, &#34;title&#34;: &#34;Dokumentacja projektowa budynek Starostwa Powiatowego w Poznaniu&#34;, &#34;entity&#34;: &#34;Starostwo Powiatowe w Poznaniu&#34;, &#34;publication_date&#34;: &#34;2026-06-17&#34;, &#34;deadline&#34;: null, &#34;url&#34;: &#34;https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-poznan-001&#34;, &#34;source&#34;: &#34;BZP (ezamowienia.gov.pl)&#34;, &#34;sector&#34;: &#34;public&#34;}, {&#34;id&#34;: &#34;a1b2c3d4e5f60009&#34;, &#34;title&#34;: &#34;Projekt architektoniczny hali produkcyjno-magazynowej centrum logistyczne Lodz&#34;, &#34;entity&#34;: &#34;Panattoni Development Europe Sp. z o.o.&#34;, &#34;publication_date&#34;: &#34;2026-06-22&#34;, &#34;deadline&#34;: &#34;2026-08-05&#34;, &#34;url&#34;: &#34;https://platformazakupowa.pl/transakcje/234567&#34;, &#34;source&#34;: &#34;platformazakupowa.pl&#34;, &#34;sector&#34;: &#34;industrial&#34;}, {&#34;id&#34;: &#34;a1b2c3d4e5f60010&#34;, &#34;title&#34;: &#34;Projekt wykonawczy hali przemyslowej zaklad produkcji Katowice&#34;, &#34;entity&#34;: &#34;Skanska S.A.&#34;, &#34;publication_date&#34;: &#34;2026-06-20&#34;, &#34;deadline&#34;: &#34;2026-07-18&#34;, &#34;url&#34;: &#34;https://logintrade.net/rejestracja,oferty.html?id=567890&#34;, &#34;source&#34;: &#34;DuckDuckGo&#34;, &#34;sector&#34;: &#34;industrial&#34;}, {&#34;id&#34;: &#34;a1b2c3d4e5f60011&#34;, &#34;title&#34;: &#34;Dokumentacja projektowa centrum dystrybucji Poczta Polska S.A.&#34;, &#34;entity&#34;: &#34;Poczta Polska S.A.&#34;, &#34;publication_date&#34;: &#34;2026-06-19&#34;, &#34;deadline&#34;: &#34;2026-07-31&#34;, &#34;url&#34;: &#34;https://ted.europa.eu/en/notice/345678-2026&#34;, &#34;source&#34;: &#34;TED (EU)&#34;, &#34;sector&#34;: &#34;soe&#34;}, {&#34;id&#34;: &#34;a1b2c3d4e5f60012&#34;, &#34;title&#34;: &#34;Projekt architektoniczny modernizacji budynku Orlen S.A. Plock&#34;, &#34;entity&#34;: &#34;PKN Orlen S.A.&#34;, &#34;publication_date&#34;: &#34;2026-06-16&#34;, &#34;deadline&#34;: &#34;2026-07-14&#34;, &#34;url&#34;: &#34;https://ted.europa.eu/en/notice/456789-2026&#34;, &#34;source&#34;: &#34;TED (EU)&#34;, &#34;sector&#34;: &#34;soe&#34;}, {&#34;id&#34;: &#34;a1b2c3d4e5f60013&#34;, &#34;title&#34;: &#34;Projekt budowlany i wykonawczy muzeum regionalnego MKiDN&#34;, &#34;entity&#34;: &#34;Ministerstwo Kultury i Dziedzictwa Narodowego&#34;, &#34;publication_date&#34;: &#34;2026-06-15&#34;, &#34;deadline&#34;: &#34;2026-07-20&#34;, &#34;url&#34;: &#34;https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-mkidn-001&#34;, &#34;source&#34;: &#34;BZP (ezamowienia.gov.pl)&#34;, &#34;sector&#34;: &#34;public&#34;}]};
+    <script>
+        /* ── Server-side injected data ───────────────────── */
+        const MANIFEST = [{"date": "2026-06-24", "file": "reports/2026-06-24.json"}];
+        const INIT_REPORT = {"date": "2026-06-24", "count": 13, "generated_at": "2026-06-24T08:47:52.536105+00:00", "tenders": [{"id": "a1b2c3d4e5f60001", "title": "Projekt architektoniczny i wykonawczy centrum badawczo-rozwojowego KGHM Polska Miedz S.A. w Lubinie", "entity": "KGHM Polska Miedz S.A.", "publication_date": "2026-06-22", "deadline": "2026-07-28", "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-kghm-001", "source": "BZP (ezamowienia.gov.pl)", "sector": "soe"}, {"id": "a1b2c3d4e5f60002", "title": "Dokumentacja projektowa budowlano-wykonawcza PGE Energetyka Kolejowa S.A.", "entity": "PGE Energetyka Kolejowa S.A.", "publication_date": "2026-06-21", "deadline": "2026-07-20", "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-pge-001", "source": "BZP (ezamowienia.gov.pl)", "sector": "soe"}, {"id": "a1b2c3d4e5f60003", "title": "Projekt architektoniczny budynku biurowego PKP S.A. Warszawa Zachodnia", "entity": "PKP S.A. Centrum Realizacji Inwestycji", "publication_date": "2026-06-20", "deadline": "2026-07-15", "url": "https://platformazakupowa.pl/transakcje/123456", "source": "platformazakupowa.pl", "sector": "soe"}, {"id": "a1b2c3d4e5f60004", "title": "Projekt wykonawczy hali magazynowo-logistycznej Tauron Dystrybucja", "entity": "Tauron Dystrybucja S.A.", "publication_date": "2026-06-19", "deadline": "2026-07-30", "url": "https://logintrade.net/rejestracja,oferty.html?id=789012", "source": "DuckDuckGo", "sector": "soe"}, {"id": "a1b2c3d4e5f60005", "title": "Dokumentacja projektowa budynek uzytecznosci publicznej Urzad Miejski Wroclaw", "entity": "Gmina Wroclaw Urzad Miejski", "publication_date": "2026-06-23", "deadline": "2026-08-01", "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-wroc-001", "source": "BZP (ezamowienia.gov.pl)", "sector": "public"}, {"id": "a1b2c3d4e5f60006", "title": "Projekt architektoniczny rozbudowy Szpitala Uniwersyteckiego w Krakowie", "entity": "Szpital Uniwersytecki w Krakowie", "publication_date": "2026-06-21", "deadline": "2026-07-25", "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-krak-001", "source": "BZP (ezamowienia.gov.pl)", "sector": "public"}, {"id": "a1b2c3d4e5f60007", "title": "Projekt budowlano-wykonawczy biblioteki miejskiej Miasto Gdansk", "entity": "Gmina Miasto Gdansk", "publication_date": "2026-06-18", "deadline": "2026-07-22", "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-gdansk-001", "source": "BZP (ezamowienia.gov.pl)", "sector": "public"}, {"id": "a1b2c3d4e5f60008", "title": "Dokumentacja projektowa budynek Starostwa Powiatowego w Poznaniu", "entity": "Starostwo Powiatowe w Poznaniu", "publication_date": "2026-06-17", "deadline": null, "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-poznan-001", "source": "BZP (ezamowienia.gov.pl)", "sector": "public"}, {"id": "a1b2c3d4e5f60009", "title": "Projekt architektoniczny hali produkcyjno-magazynowej centrum logistyczne Lodz", "entity": "Panattoni Development Europe Sp. z o.o.", "publication_date": "2026-06-22", "deadline": "2026-08-05", "url": "https://platformazakupowa.pl/transakcje/234567", "source": "platformazakupowa.pl", "sector": "industrial"}, {"id": "a1b2c3d4e5f60010", "title": "Projekt wykonawczy hali przemyslowej zaklad produkcji Katowice", "entity": "Skanska S.A.", "publication_date": "2026-06-20", "deadline": "2026-07-18", "url": "https://logintrade.net/rejestracja,oferty.html?id=567890", "source": "DuckDuckGo", "sector": "industrial"}, {"id": "a1b2c3d4e5f60011", "title": "Dokumentacja projektowa centrum dystrybucji Poczta Polska S.A.", "entity": "Poczta Polska S.A.", "publication_date": "2026-06-19", "deadline": "2026-07-31", "url": "https://ted.europa.eu/en/notice/345678-2026", "source": "TED (EU)", "sector": "soe"}, {"id": "a1b2c3d4e5f60012", "title": "Projekt architektoniczny modernizacji budynku Orlen S.A. Plock", "entity": "PKN Orlen S.A.", "publication_date": "2026-06-16", "deadline": "2026-07-14", "url": "https://ted.europa.eu/en/notice/456789-2026", "source": "TED (EU)", "sector": "soe"}, {"id": "a1b2c3d4e5f60013", "title": "Projekt budowlany i wykonawczy muzeum regionalnego MKiDN", "entity": "Ministerstwo Kultury i Dziedzictwa Narodowego", "publication_date": "2026-06-15", "deadline": "2026-07-20", "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-mkidn-001", "source": "BZP (ezamowienia.gov.pl)", "sector": "public"}]};
 
-    /* ── App state ───────────────────────────────────── */
-    let activeTenders = INIT_REPORT.tenders || [];
-    let activeFilter  = 'all';
-    let searchQuery   = '';
+        /* ── App state ───────────────────────────────────── */
+        let activeTenders = INIT_REPORT.tenders || [];
+        let activeFilter = 'all';
+        let searchQuery = '';
 
-    /* ── DOM refs ────────────────────────────────────── */
-    const $ = id => document.getElementById(id);
-    const sidebarNav       = $('sidebar-nav');
-    const mobileSelect     = $('mobile-date-select');
-    const searchInput      = $('search-input');
-    const tendersContainer = $('tenders-container');
-    const loadingState     = $('loading-state');
-    const emptyState       = $('empty-state');
+        /* ── DOM refs ────────────────────────────────────── */
+        const $ = id => document.getElementById(id);
+        const sidebarNav = $('sidebar-nav');
+        const mobileSelect = $('mobile-date-select');
+        const searchInput = $('search-input');
+        const tendersContainer = $('tenders-container');
+        const loadingState = $('loading-state');
+        const emptyState = $('empty-state');
 
-    /* ── Bootstrap ───────────────────────────────────── */
-    document.addEventListener('DOMContentLoaded', () => {
-        buildSidebar();
-        buildMobileSelect();
-        bindFilterTabs();
-        searchInput.addEventListener('input', e => {
-            searchQuery = e.target.value.trim().toLowerCase();
-            renderTenders();
-        });
-        mobileSelect.addEventListener('change', e => loadReport(e.target.value));
-        renderAll();
-    });
-
-    /* ── Sidebar ─────────────────────────────────────── */
-    function buildSidebar() {
-        MANIFEST.forEach((item, i) => {
-            const btn = document.createElement('button');
-            btn.className = `sidebar-item${i === 0 ? ' active' : ''}`;
-            btn.textContent = fmtDateSidebar(item.date);
-            btn.dataset.file = item.file;
-            btn.addEventListener('click', () => loadReport(item.file));
-            sidebarNav.appendChild(btn);
-        });
-    }
-
-    /* ── Mobile <select> ─────────────────────────────── */
-    function buildMobileSelect() {
-        MANIFEST.forEach((item, i) => {
-            const opt = new Option(item.date, item.file, i === 0, i === 0);
-            mobileSelect.appendChild(opt);
-        });
-    }
-
-    /* ── Filter tabs ─────────────────────────────────── */
-    function bindFilterTabs() {
-        document.querySelectorAll('.filter-tab').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                activeFilter = btn.dataset.sector;
+        /* ── Bootstrap ───────────────────────────────────── */
+        document.addEventListener('DOMContentLoaded', () => {
+            buildSidebar();
+            buildMobileSelect();
+            bindFilterTabs();
+            searchInput.addEventListener('input', e => {
+                searchQuery = e.target.value.trim().toLowerCase();
                 renderTenders();
             });
-        });
-    }
-
-    /* ── Async report loader ─────────────────────────── */
-    async function loadReport(file) {
-        document.querySelectorAll('.sidebar-item').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.file === file);
-        });
-        mobileSelect.value = file;
-
-        loadingState.style.display = 'flex';
-        tendersContainer.innerHTML = '';
-        emptyState.style.display   = 'none';
-
-        try {
-            const resp = await fetch(file);
-            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-            const report = await resp.json();
-            activeTenders = report.tenders || [];
-            $('header-date').textContent = `Raport: ${report.date}`;
+            mobileSelect.addEventListener('change', e => loadReport(e.target.value));
             renderAll();
-        } catch (err) {
-            console.error('Failed to load report:', err);
-            tendersContainer.innerHTML =
-                `<div style="text-align:center;font-size:12px;color:#b91c1c;padding:40px 0;">Błąd ładowania raportu.</div>`;
-        } finally {
-            loadingState.style.display = 'none';
+        });
+
+        /* ── Sidebar ─────────────────────────────────────── */
+        function buildSidebar() {
+            MANIFEST.forEach((item, i) => {
+                const btn = document.createElement('button');
+                btn.className = `sidebar-item${i === 0 ? ' active' : ''}`;
+                btn.textContent = fmtDateSidebar(item.date);
+                btn.dataset.file = item.file;
+                btn.addEventListener('click', () => loadReport(item.file));
+                sidebarNav.appendChild(btn);
+            });
         }
-    }
 
-    /* ── Render pipeline ─────────────────────────────── */
-    function renderAll() { updateStats(); renderTenders(); }
+        /* ── Mobile <select> ─────────────────────────────── */
+        function buildMobileSelect() {
+            MANIFEST.forEach((item, i) => {
+                const opt = new Option(item.date, item.file, i === 0, i === 0);
+                mobileSelect.appendChild(opt);
+            });
+        }
 
-    function updateStats() {
-        const c = { all: 0, public: 0, industrial: 0, soe: 0, other: 0 };
-        activeTenders.forEach(t => {
-            c.all++;
-            const s = t.sector || 'other';
-            c[s] = (c[s] || 0) + 1;
-        });
-        $('stat-all').textContent        = c.all;
-        $('stat-public').textContent     = c.public || 0;
-        $('stat-industrial').textContent = c.industrial || 0;
-        $('stat-soe').textContent        = c.soe || 0;
+        /* ── Filter tabs ─────────────────────────────────── */
+        function bindFilterTabs() {
+            document.querySelectorAll('.filter-tab').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeFilter = btn.dataset.sector;
+                    renderTenders();
+                });
+            });
+        }
 
-        $('tab-all').textContent        = `(${c.all})`;
-        $('tab-public').textContent     = `(${c.public || 0})`;
-        $('tab-industrial').textContent = `(${c.industrial || 0})`;
-        $('tab-soe').textContent        = `(${c.soe || 0})`;
-        $('tab-other').textContent      = `(${c.other || 0})`;
-    }
+        /* ── Async report loader ─────────────────────────── */
+        async function loadReport(file) {
+            document.querySelectorAll('.sidebar-item').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.file === file);
+            });
+            mobileSelect.value = file;
 
-    function filteredTenders() {
-        return activeTenders.filter(t => {
-            if (activeFilter !== 'all' && (t.sector || 'other') !== activeFilter) return false;
-            if (searchQuery) {
-                const hay = `${t.title || ''} ${t.entity || ''}`.toLowerCase();
-                if (!hay.includes(searchQuery)) return false;
-            }
-            return true;
-        });
-    }
-
-    function renderTenders() {
-        const list = filteredTenders();
-        $('header-count').textContent = `${list.length} wynik${pl(list.length)}`;
-
-        if (list.length === 0) {
+            loadingState.style.display = 'flex';
             tendersContainer.innerHTML = '';
-            emptyState.style.display   = 'flex';
-            return;
+            emptyState.style.display = 'none';
+
+            try {
+                const resp = await fetch(file);
+                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                const report = await resp.json();
+                activeTenders = report.tenders || [];
+                $('header-date').textContent = `Raport: ${report.date}`;
+                renderAll();
+            } catch (err) {
+                console.error('Failed to load report:', err);
+                tendersContainer.innerHTML =
+                    `<div style="text-align:center;font-size:12px;color:#b91c1c;padding:40px 0;">Błąd ładowania raportu.</div>`;
+            } finally {
+                loadingState.style.display = 'none';
+            }
         }
-        emptyState.style.display   = 'none';
-        tendersContainer.innerHTML = list.map(tenderCard).join('');
-    }
 
-    /* ── Sector config ───────────────────────────────── */
-    const SECTORS = {
-        public:     { label: 'Publiczny',   cls: 'sector-public',     color: 'var(--c-public)' },
-        industrial: { label: 'Przemysłowy', cls: 'sector-industrial', color: 'var(--c-industrial)' },
-        soe:        { label: 'SSP',         cls: 'sector-soe',        color: 'var(--c-soe)' },
-        other:      { label: 'Inne',        cls: 'sector-other',      color: 'var(--c-other)' },
-    };
+        /* ── Render pipeline ─────────────────────────────── */
+        function renderAll() { updateStats(); renderTenders(); }
 
-    /* ── Single tender card ──────────────────────────── */
-    function tenderCard(t) {
-        const s    = SECTORS[t.sector] || SECTORS.other;
-        const pub  = t.publication_date ? fmtDate(t.publication_date) : '—';
-        const dl   = t.deadline ? fmtDate(t.deadline) : '—';
-        const soon = t.deadline && deadlineSoon(t.deadline);
+        function updateStats() {
+            const c = { all: 0, public: 0, industrial: 0, soe: 0, other: 0 };
+            activeTenders.forEach(t => {
+                c.all++;
+                const s = t.sector || 'other';
+                c[s] = (c[s] || 0) + 1;
+            });
+            $('stat-all').textContent = c.all;
+            $('stat-public').textContent = c.public || 0;
+            $('stat-industrial').textContent = c.industrial || 0;
+            $('stat-soe').textContent = c.soe || 0;
 
-        const titleHtml  = hl(esc(t.title  || 'Brak tytułu'), searchQuery);
-        const entityHtml = hl(esc(t.entity || '—'),           searchQuery);
-        const sourceText = esc(t.source || '—');
+            $('tab-all').textContent = `(${c.all})`;
+            $('tab-public').textContent = `(${c.public || 0})`;
+            $('tab-industrial').textContent = `(${c.industrial || 0})`;
+            $('tab-soe').textContent = `(${c.soe || 0})`;
+            $('tab-other').textContent = `(${c.other || 0})`;
+        }
 
-        return `
+        function filteredTenders() {
+            return activeTenders.filter(t => {
+                if (activeFilter !== 'all' && (t.sector || 'other') !== activeFilter) return false;
+                if (searchQuery) {
+                    const hay = `${t.title || ''} ${t.entity || ''}`.toLowerCase();
+                    if (!hay.includes(searchQuery)) return false;
+                }
+                return true;
+            });
+        }
+
+        function renderTenders() {
+            const list = filteredTenders();
+            $('header-count').textContent = `${list.length} wynik${pl(list.length)}`;
+
+            if (list.length === 0) {
+                tendersContainer.innerHTML = '';
+                emptyState.style.display = 'flex';
+                return;
+            }
+            emptyState.style.display = 'none';
+            tendersContainer.innerHTML = list.map(tenderCard).join('');
+        }
+
+        /* ── Sector config ───────────────────────────────── */
+        const SECTORS = {
+            public: { label: 'Publiczny', cls: 'sector-public', color: 'var(--c-public)' },
+            industrial: { label: 'Przemysłowy', cls: 'sector-industrial', color: 'var(--c-industrial)' },
+            soe: { label: 'SSP', cls: 'sector-soe', color: 'var(--c-soe)' },
+            other: { label: 'Inne', cls: 'sector-other', color: 'var(--c-other)' },
+        };
+
+        /* ── Single tender card ──────────────────────────── */
+        function tenderCard(t) {
+            const s = SECTORS[t.sector] || SECTORS.other;
+            const pub = t.publication_date ? fmtDate(t.publication_date) : '—';
+            const dl = t.deadline ? fmtDate(t.deadline) : '—';
+            const soon = t.deadline && deadlineSoon(t.deadline);
+
+            const titleHtml = hl(esc(t.title || 'Brak tytułu'), searchQuery);
+            const entityHtml = hl(esc(t.entity || '—'), searchQuery);
+            const sourceText = esc(t.source || '—');
+
+            return `
 <article class="tender-card ${s.cls}" style="background:var(--white); padding:18px 22px 16px 20px;">
   <div style="display:flex; align-items:flex-start; gap:20px;">
     <div style="flex:1; min-width:0;">
@@ -425,52 +564,53 @@
     </div>
   </div>
 </article>`;
-    }
+        }
 
-    /* ── Utility functions ───────────────────────────── */
-    function esc(str) {
-        return String(str || '')
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;');
-    }
+        /* ── Utility functions ───────────────────────────── */
+        function esc(str) {
+            return String(str || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
 
-    function hl(html, q) {
-        if (!q) return html;
-        const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-        return html.replace(re, '<mark>$1</mark>');
-    }
+        function hl(html, q) {
+            if (!q) return html;
+            const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            return html.replace(re, '<mark>$1</mark>');
+        }
 
-    function fmtDate(iso) {
-        try {
-            return new Date(iso + 'T00:00:00').toLocaleDateString('pl-PL', {
-                year: 'numeric', month: 'short', day: 'numeric'
-            });
-        } catch { return iso; }
-    }
+        function fmtDate(iso) {
+            try {
+                return new Date(iso + 'T00:00:00').toLocaleDateString('pl-PL', {
+                    year: 'numeric', month: 'short', day: 'numeric'
+                });
+            } catch { return iso; }
+        }
 
-    function fmtDateSidebar(iso) {
-        try {
-            return new Date(iso + 'T00:00:00').toLocaleDateString('pl-PL', {
-                weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'
-            });
-        } catch { return iso; }
-    }
+        function fmtDateSidebar(iso) {
+            try {
+                return new Date(iso + 'T00:00:00').toLocaleDateString('pl-PL', {
+                    weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'
+                });
+            } catch { return iso; }
+        }
 
-    function deadlineSoon(iso) {
-        try {
-            const diffDays = (new Date(iso + 'T00:00:00') - Date.now()) / 86_400_000;
-            return diffDays >= 0 && diffDays <= 7;
-        } catch { return false; }
-    }
+        function deadlineSoon(iso) {
+            try {
+                const diffDays = (new Date(iso + 'T00:00:00') - Date.now()) / 86_400_000;
+                return diffDays >= 0 && diffDays <= 7;
+            } catch { return false; }
+        }
 
-    function pl(n) {
-        if (n === 1) return '';
-        if (n >= 2 && n <= 4) return 'i';
-        return 'ów';
-    }
-</script>
+        function pl(n) {
+            if (n === 1) return '';
+            if (n >= 2 && n <= 4) return 'i';
+            return 'ów';
+        }
+    </script>
 
 </body>
+
 </html>

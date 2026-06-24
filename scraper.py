@@ -45,6 +45,7 @@ from bs4 import BeautifulSoup
 from dateutil import parser as dateutil_parser
 from duckduckgo_search import DDGS
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from markupsafe import Markup
 
 # ---------------------------------------------------------------------------
 # Configuration
@@ -645,7 +646,8 @@ def generate_dashboard() -> None:
         autoescape=select_autoescape(["html"]),
     )
     # Register tojson so the template can embed Python objects as JSON literals
-    env.filters["tojson"] = lambda v: json.dumps(v, ensure_ascii=False)
+    # Markup() marks the output safe so Jinja2 autoescape won't HTML-encode the quotes
+    env.filters["tojson"] = lambda v: Markup(json.dumps(v, ensure_ascii=False))
 
     html = env.get_template("dashboard_template.html").render(
         manifest=manifest,
