@@ -6,6 +6,12 @@ on:
   schedule:
     - cron: '0 5 * * *'
 
+  # Push a commit that touches .trigger to run the scraper immediately on GitHub
+  push:
+    branches: [main]
+    paths:
+      - '.trigger'
+
   # Allow manual runs from the GitHub Actions UI with an optional override
   workflow_dispatch:
     inputs:
