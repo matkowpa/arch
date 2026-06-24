@@ -74,6 +74,9 @@ log = logging.getLogger("tender_scraper")
 
 _REQUEST_TIMEOUT: int = 20
 _DELAY_RANGE: tuple[float, float] = (1.5, 3.5)
+# Set DDG_SSL_VERIFY=0 in corporate environments where the proxy intercepts TLS.
+# On GitHub Actions this should always stay True.
+_DDG_VERIFY_SSL: bool = os.getenv("DDG_SSL_VERIFY", "1") != "0"
 _USER_AGENTS: list[str] = [
     (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -240,7 +243,9 @@ def save_history(seen_ids: set[str]) -> None:
 def fetch_ddg(queries: list[str]) -> list[dict]:
     """Run a list of DDG text queries and return raw tender dicts."""
     results: list[dict] = []
-    with DDGS() as ddgs:
+    # proxies=None lets primp pick up system proxy; verify controls TLS cert check
+    ddgs_kwargs: dict = {"verify": _DDG_VERIFY_SSL}
+    with DDGS(**ddgs_kwargs) as ddgs:
         for query in queries:
             try:
                 log.info("[DDG] Querying: %s", query)
@@ -275,36 +280,40 @@ def fetch_ddg(queries: list[str]) -> list[dict]:
 # Source 2: TED (Tenders Electronic Daily) EU REST API
 # ---------------------------------------------------------------------------
 
-_TED_API = "https://ted.europa.eu/api/v2.0/notices/search"
+_TED_API = "https://api.ted.europa.eu/v3/notices/search"
 
 
 def fetch_ted() -> list[dict]:
-    """Fetch architecture-related tenders in Poland from the TED API."""
+    """Fetch architecture-related tenders in Poland from the TED v3 API (POST)."""
     results: list[dict] = []
     cpv_list = ",".join(_ARCH_CPV_CODES)
     cutoff_str = CUTOFF_DATE.strftime("%Y%m%d")
-    # TED Expert Search syntax
+    # TED v3 Expert Search syntax; API requires POST with JSON body
     query = (
         f"(PC=[{cpv_list}] OR TE~architektura OR TE~\"projekt wykonawczy\") "
         f"AND CY=PL AND PD>=[{cutoff_str}]"
     )
-    params = {
+    body = {
         "q": query,
-        "fields": "notice-number,publication-date,title,organisation-name,deadline-date",
+        "fields": ["notice-number", "publication-date", "title", "organisation-name", "deadline-date"],
         "pageSize": 100,
         "page": 1,
+        "scope": 3,
         "sortField": "publication-date",
         "sortOrder": "desc",
     }
     try:
         log.info("[TED] Fetching EU tenders (CPV 712xx / 7132x, Poland)")
-        resp = _get(
+        time.sleep(random.uniform(*_DELAY_RANGE))
+        resp = requests.post(
             _TED_API,
-            params=params,
+            json=body,
             headers={
                 "Accept": "application/json",
+                "Content-Type": "application/json",
                 "User-Agent": random.choice(_USER_AGENTS),
             },
+            timeout=_REQUEST_TIMEOUT,
         )
         resp.raise_for_status()
         data = resp.json()
@@ -341,6 +350,13 @@ def fetch_ted() -> list[dict]:
 # ---------------------------------------------------------------------------
 
 _BZP_API_BASE = "https://ezamowienia.gov.pl/mo-client-board/api"
+# Headers required to receive JSON instead of HTML from the BZP SPA backend
+_BZP_HEADERS = {
+    "Accept": "application/json",
+    "X-Requested-With": "XMLHttpRequest",
+    "Referer": "https://ezamowienia.gov.pl/",
+    "Origin": "https://ezamowienia.gov.pl",
+}
 
 
 def fetch_bzp() -> list[dict]:
@@ -373,18 +389,21 @@ def _bzp_search(extra_params: dict, results: list[dict], tag: str) -> None:
         "sortOrder": "DESC",
         **extra_params,
     }
+    headers = {**_random_headers(), **_BZP_HEADERS}
     resp = _get(
         f"{_BZP_API_BASE}/opi/og/searchNotice",
         params=params,
-        headers={
-            "Accept": "application/json",
-            "User-Agent": random.choice(_USER_AGENTS),
-        },
+        headers=headers,
     )
-    if resp.status_code == 404:
-        log.debug("[BZP] Endpoint not found for %s – skipping", tag)
+    if resp.status_code in (404, 403):
+        log.debug("[BZP] Endpoint returned %d for %s – skipping", resp.status_code, tag)
         return
     resp.raise_for_status()
+    # Guard: endpoint may return HTML redirect instead of JSON
+    ct = resp.headers.get("Content-Type", "")
+    if "html" in ct or not resp.content:
+        log.debug("[BZP] Non-JSON response (%s) for %s – skipping", ct, tag)
+        return
 
     data = resp.json()
     # Normalise – the API may return a list directly or nest under a key
@@ -462,6 +481,12 @@ def _extract_bzp_item(item: dict, results: list[dict]) -> None:
 # ---------------------------------------------------------------------------
 
 _PZP_BASE = "https://platformazakupowa.pl"
+# Try multiple URL patterns — the platform has changed its search URL over time
+_PZP_SEARCH_URLS = [
+    "{base}/transakcje",
+    "{base}/pn/szukaj",
+    "{base}/transakcje/poczta",
+]
 
 
 def fetch_platformazakupowa() -> list[dict]:
@@ -473,16 +498,20 @@ def fetch_platformazakupowa() -> list[dict]:
         "dokumentacja projektowa",
     ]
     for term in search_terms:
-        try:
-            _pzp_search(term, results)
-        except Exception as exc:
-            log.warning("[PZP] Search %r failed: %s", term, exc)
+        for url_tpl in _PZP_SEARCH_URLS:
+            try:
+                _pzp_search(term, results, url_tpl.format(base=_PZP_BASE))
+                break  # stop trying URLs once one succeeds
+            except Exception as exc:
+                log.debug("[PZP] %s with %r: %s", url_tpl, term, exc)
+        else:
+            log.warning("[PZP] All URL patterns failed for %r", term)
     log.info("[PZP] Collected %d results", len(results))
     return results
 
 
-def _pzp_search(term: str, results: list[dict]) -> None:
-    resp = _get(f"{_PZP_BASE}/transakcje/poczta", params={"search": term})
+def _pzp_search(term: str, results: list[dict], search_url: str) -> None:
+    resp = _get(search_url, params={"search": term, "q": term})
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "lxml")
 

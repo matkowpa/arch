@@ -1,0 +1,137 @@
+{
+  "date": "2026-06-24",
+  "count": 13,
+  "generated_at": "2026-06-24T08:27:56.760138+00:00",
+  "tenders": [
+    {
+      "id": "a1b2c3d4e5f60001",
+      "title": "Projekt architektoniczny i wykonawczy centrum badawczo-rozwojowego KGHM Polska Miedz S.A. w Lubinie",
+      "entity": "KGHM Polska Miedz S.A.",
+      "publication_date": "2026-06-22",
+      "deadline": "2026-07-28",
+      "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-kghm-001",
+      "source": "BZP (ezamowienia.gov.pl)",
+      "sector": "soe"
+    },
+    {
+      "id": "a1b2c3d4e5f60002",
+      "title": "Dokumentacja projektowa budowlano-wykonawcza rozbudowy siedziby PGE Energetyka Kolejowa",
+      "entity": "PGE Energetyka Kolejowa S.A.",
+      "publication_date": "2026-06-21",
+      "deadline": "2026-07-20",
+      "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-pge-001",
+      "source": "BZP (ezamowienia.gov.pl)",
+      "sector": "soe"
+    },
+    {
+      "id": "a1b2c3d4e5f60003",
+      "title": "Projekt architektoniczny nowego budynku biurowego PKP S.A. – Warszawa Zachodnia",
+      "entity": "PKP S.A. – Centrum Realizacji Inwestycji",
+      "publication_date": "2026-06-20",
+      "deadline": "2026-07-15",
+      "url": "https://platformazakupowa.pl/transakcje/123456",
+      "source": "platformazakupowa.pl",
+      "sector": "soe"
+    },
+    {
+      "id": "a1b2c3d4e5f60004",
+      "title": "Projekt wykonawczy hali magazynowo-logistycznej wraz z zapleczem biurowym – Tauron Dystrybucja",
+      "entity": "Tauron Dystrybucja S.A.",
+      "publication_date": "2026-06-19",
+      "deadline": "2026-07-30",
+      "url": "https://logintrade.net/rejestracja,oferty.html?id=789012",
+      "source": "DuckDuckGo",
+      "sector": "soe"
+    },
+    {
+      "id": "a1b2c3d4e5f60005",
+      "title": "Opracowanie dokumentacji projektowej (projekt budowlany i wykonawczy) dla budynku uzytecznosci publicznej – Urzad Miejski Wroclaw",
+      "entity": "Gmina Wroclaw – Urzad Miejski",
+      "publication_date": "2026-06-23",
+      "deadline": "2026-08-01",
+      "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-wroc-001",
+      "source": "BZP (ezamowienia.gov.pl)",
+      "sector": "public"
+    },
+    {
+      "id": "a1b2c3d4e5f60006",
+      "title": "Projekt architektoniczny rozbudowy Szpitala Uniwersyteckiego w Krakowie – skrzydlo onkologiczne",
+      "entity": "Szpital Uniwersytecki w Krakowie",
+      "publication_date": "2026-06-21",
+      "deadline": "2026-07-25",
+      "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-krak-001",
+      "source": "BZP (ezamowienia.gov.pl)",
+      "sector": "public"
+    },
+    {
+      "id": "a1b2c3d4e5f60007",
+      "title": "Projekt budowlano-wykonawczy biblioteki miejskiej – Miasto Gdansk",
+      "entity": "Gmina Miasto Gdansk",
+      "publication_date": "2026-06-18",
+      "deadline": "2026-07-22",
+      "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-gdansk-001",
+      "source": "BZP (ezamowienia.gov.pl)",
+      "sector": "public"
+    },
+    {
+      "id": "a1b2c3d4e5f60008",
+      "title": "Dokumentacja projektowa dla budynku Starostwa Powiatowego w Poznaniu – etap wykonawczy",
+      "entity": "Starostwo Powiatowe w Poznaniu",
+      "publication_date": "2026-06-17",
+      "deadline": null,
+      "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-poznan-001",
+      "source": "BZP (ezamowienia.gov.pl)",
+      "sector": "public"
+    },
+    {
+      "id": "a1b2c3d4e5f60009",
+      "title": "Projekt architektoniczny hali produkcyjno-magazynowej z zapleczem socjalnym – centrum logistyczne Lodz",
+      "entity": "Panattoni Development Europe Sp. z o.o.",
+      "publication_date": "2026-06-22",
+      "deadline": "2026-08-05",
+      "url": "https://platformazakupowa.pl/transakcje/234567",
+      "source": "platformazakupowa.pl",
+      "sector": "industrial"
+    },
+    {
+      "id": "a1b2c3d4e5f60010",
+      "title": "Projekt wykonawczy hali przemyslowej – zaklad produkcji elementow prefabrykowanych Katowice",
+      "entity": "Skanska S.A.",
+      "publication_date": "2026-06-20",
+      "deadline": "2026-07-18",
+      "url": "https://logintrade.net/rejestracja,oferty.html?id=567890",
+      "source": "DuckDuckGo",
+      "sector": "industrial"
+    },
+    {
+      "id": "a1b2c3d4e5f60011",
+      "title": "Opracowanie dokumentacji projektowej dla centrum dystrybucji – Poczta Polska S.A.",
+      "entity": "Poczta Polska S.A.",
+      "publication_date": "2026-06-19",
+      "deadline": "2026-07-31",
+      "url": "https://ted.europa.eu/en/notice/345678-2026",
+      "source": "TED (EU)",
+      "sector": "soe"
+    },
+    {
+      "id": "a1b2c3d4e5f60012",
+      "title": "Projekt architektoniczny modernizacji budynku administracyjnego – Orlen S.A. Plock",
+      "entity": "PKN Orlen S.A.",
+      "publication_date": "2026-06-16",
+      "deadline": "2026-07-14",
+      "url": "https://ted.europa.eu/en/notice/456789-2026",
+      "source": "TED (EU)",
+      "sector": "soe"
+    },
+    {
+      "id": "a1b2c3d4e5f60013",
+      "title": "Projekt budowlany i wykonawczy muzeum regionalnego – Ministerstwo Kultury i Dziedzictwa Narodowego",
+      "entity": "Ministerstwo Kultury i Dziedzictwa Narodowego",
+      "publication_date": "2026-06-15",
+      "deadline": "2026-07-20",
+      "url": "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-mkidn-001",
+      "source": "BZP (ezamowienia.gov.pl)",
+      "sector": "public"
+    }
+  ]
+}
