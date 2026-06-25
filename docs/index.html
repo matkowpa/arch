@@ -305,7 +305,7 @@
                 <nav id="sidebar-nav" style="flex:1; overflow-y:auto; padding:8px 10px 12px;"></nav>
                 <div style="padding:12px 20px; border-top:1px solid var(--border);">
                     <p style="font-size:9px; color:var(--light); margin:0 0 3px;">Wygenerowano</p>
-                    <p style="font-size:10px; color:var(--mid); margin:0;">2026-06-25 13:50 UTC</p>
+                    <p style="font-size:10px; color:var(--mid); margin:0;">2026-06-25 13:55 UTC</p>
                 </div>
             </aside>
 
@@ -448,9 +448,16 @@
             emptyState.style.display = 'none';
 
             try {
-                const resp = await fetch(file);
-                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-                const report = await resp.json();
+                let report;
+                if (file === MANIFEST[0].file) {
+                    // Always use the server-side injected data for the latest report —
+                    // avoids serving a stale cached JSON that may be missing new fields.
+                    report = INIT_REPORT;
+                } else {
+                    const resp = await fetch(file);
+                    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                    report = await resp.json();
+                }
                 activeTenders = report.tenders || [];
                 $('header-date').textContent = `Raport: ${report.date}`;
                 renderAll();

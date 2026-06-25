@@ -448,9 +448,16 @@
             emptyState.style.display = 'none';
 
             try {
-                const resp = await fetch(file);
-                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-                const report = await resp.json();
+                let report;
+                if (file === MANIFEST[0].file) {
+                    // Always use the server-side injected data for the latest report —
+                    // avoids serving a stale cached JSON that may be missing new fields.
+                    report = INIT_REPORT;
+                } else {
+                    const resp = await fetch(file);
+                    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                    report = await resp.json();
+                }
                 activeTenders = report.tenders || [];
                 $('header-date').textContent = `Raport: ${report.date}`;
                 renderAll();
