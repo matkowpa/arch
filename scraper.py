@@ -37,7 +37,7 @@ import time
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional
-from urllib.parse import urljoin
+from urllib.parse import urljoin, quote as urlquote
 
 import feedparser
 import requests
@@ -515,14 +515,17 @@ def _bzp_search(extra_params: dict, results: list[dict], tag: str) -> None:
 
 
 def _extract_bzp_item(item: dict, results: list[dict]) -> None:
-    notice_id = (
-        item.get("id")
+    # Prefer publicationNumber (proc_id format like "2025/BZP 00123456/01") because
+    # the BZP SPA route is /bzp/notice/{year}/{BZP%20XXXXXXXX}/{version}.
+    # A raw numeric "id" won't resolve to a valid notice page.
+    notice_id = str(
+        item.get("publicationNumber")
         or item.get("noticeId")
-        or item.get("publicationNumber")
+        or item.get("id")
         or ""
-    )
+    ).strip()
     url = item.get("url") or item.get("href") or (
-        f"https://ezamowienia.gov.pl/mo-client-board/bzp/notice/{notice_id}"
+        f"https://ezamowienia.gov.pl/mo-client-board/bzp/notice/{urlquote(notice_id, safe='/')}"
         if notice_id
         else ""
     )
