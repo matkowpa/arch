@@ -247,7 +247,7 @@ def _score_design_only(tender: dict) -> float:
     )
     cpv = tender.get("cpv") or ""
     proc = (tender.get("procedure_type") or "").lower()
-    value_str = tender.get("value") or ""
+    num: Optional[float] = tender.get("value_raw")
 
     score = 0.5
 
@@ -274,21 +274,15 @@ def _score_design_only(tender: dict) -> float:
         score -= 0.25
 
     # --- Value heuristic: large contracts usually include construction ---
-    # Value is formatted as "1 234 567,89 PLN" (Polish locale)
-    m = re.search(r"[\d ]+,[\d]{2}", value_str)
-    if m:
-        try:
-            num = float(m.group(0).replace(" ", "").replace(",", "."))
-            if num > 10_000_000:
-                score -= 0.30
-            elif num > 5_000_000:
-                score -= 0.15
-            elif num < 200_000:
-                score += 0.15
-            elif num < 500_000:
-                score += 0.08
-        except ValueError:
-            pass
+    if num is not None:
+        if num > 10_000_000:
+            score -= 0.30
+        elif num > 5_000_000:
+            score -= 0.15
+        elif num < 200_000:
+            score += 0.15
+        elif num < 500_000:
+            score += 0.08
 
     return round(max(0.05, min(0.95, score)), 2)
 
@@ -361,12 +355,18 @@ def _enrich_bzp_detail(proc_id: str) -> dict:
             data.get("estimatedValueBrutto") or data.get("estimatedValue")
             or data.get("contractValueBrutto") or data.get("tenderValue")
         )
+        detail_value_raw: Optional[float] = None
+        try:
+            detail_value_raw = float(raw_val) if raw_val is not None else None
+        except (TypeError, ValueError):
+            pass
         return {
             "description": str(
                 data.get("orderSubject") or data.get("description")
                 or data.get("shortDescription") or ""
             )[:300] or None,
             "value": _format_value(raw_val),
+            "value_raw": detail_value_raw,
             "cpv": str(data.get("mainCpvCode") or data.get("cpvCode") or "").strip() or None,
             "procedure_type": str(
                 data.get("procedureType") or data.get("orderType")
@@ -434,6 +434,7 @@ def fetch_ddg(queries: list[str]) -> list[dict]:
                             "deadline": None,
                             "description": None,
                             "value": None,
+                            "value_raw": None,
                             "cpv": None,
                             "procedure_type": None,
                             "url": url,
@@ -584,7 +585,12 @@ def _extract_ted_item(notice: dict, results: list[dict]) -> None:
     val_raw = notice.get("estimated-value-glo")
     cur_raw = notice.get("estimated-value-cur-glo")
     value = None
+    value_raw: Optional[float] = None
     if val_raw is not None:
+        try:
+            value_raw = float(val_raw)
+        except (TypeError, ValueError):
+            pass
         cur = _ted_multilang(cur_raw) if cur_raw else "EUR"
         value = _format_value(val_raw) or f"{float(val_raw):,.2f} {cur}"
 
@@ -597,6 +603,7 @@ def _extract_ted_item(notice: dict, results: list[dict]) -> None:
         "deadline": deadline,
         "description": description,
         "value": value,
+        "value_raw": value_raw,
         "cpv": arch_cpv,
         "procedure_type": proc_type,
         "url": url,
@@ -732,6 +739,11 @@ def _extract_bzp_item(item: dict, results: list[dict]) -> None:
         item.get("estimatedValueBrutto") or item.get("estimatedValue")
         or item.get("contractValueBrutto") or item.get("tenderValue")
     )
+    bzp_value_raw: Optional[float] = None
+    try:
+        bzp_value_raw = float(raw_val) if raw_val is not None else None
+    except (TypeError, ValueError):
+        pass
     results.append(
         {
             "id": _make_id(url),
@@ -745,6 +757,7 @@ def _extract_bzp_item(item: dict, results: list[dict]) -> None:
                 or item.get("shortDescription") or ""
             )[:300] or None,
             "value": _format_value(raw_val),
+            "value_raw": bzp_value_raw,
             "cpv": str(item.get("mainCpvCode") or item.get("cpvCode") or "").strip() or None,
             "procedure_type": str(
                 item.get("procedureType") or item.get("orderType")
@@ -825,6 +838,14 @@ def _pzp_search(term: str, results: list[dict], search_url: str) -> None:
         # Try to extract estimated value from the row text
         m_val = re.search(r'([\d\s]+[,.]\d{2})\s*(?:PLN|zł)', row_text, re.IGNORECASE)
         pzp_value = _format_value(m_val.group(1)) if m_val else None
+        pzp_value_raw: Optional[float] = None
+        if m_val:
+            try:
+                pzp_value_raw = float(
+                    m_val.group(1).replace(" ", "").replace(",", ".")
+                )
+            except ValueError:
+                pass
         results.append(
             {
                 "id": _make_id(full_url),
@@ -835,6 +856,7 @@ def _pzp_search(term: str, results: list[dict], search_url: str) -> None:
                 "deadline": None,
                 "description": None,
                 "value": pzp_value,
+                "value_raw": pzp_value_raw,
                 "cpv": None,
                 "procedure_type": None,
                 "url": full_url,

@@ -17,7 +17,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/417588-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "3f7471da879ee55d",
@@ -33,7 +34,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/417606-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.75
+      "design_probability": 0.75,
+      "value_raw": null
     },
     {
       "id": "4b0f08d8c9ad4d28",
@@ -49,7 +51,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/417875-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "a3c393c769fd8e15",
@@ -65,7 +68,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/417922-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "543f4b2c4063d823",
@@ -81,7 +85,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/417937-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "db11e578b57e6f72",
@@ -97,7 +102,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/418003-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "d7b16dd5fbc2ad00",
@@ -113,7 +119,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/418196-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "f313cd4b9c49e959",
@@ -129,7 +136,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/418240-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "469882c98a63923d",
@@ -145,7 +153,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/418338-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "6199af94e8449c66",
@@ -161,7 +170,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/418389-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "2855c4d3e4a1433a",
@@ -177,7 +187,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/418555-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "d3f42a8bc2d782cb",
@@ -193,7 +204,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/418615-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "344e443db8b61d9f",
@@ -209,7 +221,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/418635-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "c1f626bff6e4d674",
@@ -225,7 +238,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/418719-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "f4e19f65c38ba539",
@@ -241,7 +255,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/418794-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.15
+      "design_probability": 0.15,
+      "value_raw": null
     },
     {
       "id": "c6cc2e253ffb4725",
@@ -257,7 +272,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/418899-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "dbacf38347646c9b",
@@ -273,7 +289,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/418915-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "75134a397fdb53de",
@@ -289,7 +306,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/419265-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "ee9e0e303a3bf7a7",
@@ -305,7 +323,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/419561-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "11555ef6174b6341",
@@ -321,7 +340,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/419588-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "8b36cf2fac03c2a3",
@@ -337,7 +357,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/419721-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.15
+      "design_probability": 0.15,
+      "value_raw": null
     },
     {
       "id": "41cb7c3ed1ddd2c2",
@@ -353,7 +374,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/420162-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "03fea1188d8e21de",
@@ -369,7 +391,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/420260-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "b70b81fff2036200",
@@ -385,7 +408,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/420380-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "888b2b15b5b488ac",
@@ -401,7 +425,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/420421-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "9a12411be3c1d05c",
@@ -417,7 +442,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/420435-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "16ba75c792a8ec0d",
@@ -433,7 +459,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/420466-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "dfd47901db94d797",
@@ -449,7 +476,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/420708-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "8e5ec72a15503ded",
@@ -465,7 +493,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/420755-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "c787b14b20442c4f",
@@ -481,7 +510,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/420946-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "7ca9838ab7a8bc41",
@@ -497,7 +527,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/420968-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "21a327cb2baa670c",
@@ -513,7 +544,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/421195-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "79b36f654fdb00b0",
@@ -529,7 +561,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/421268-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "8d0fee50bf3821de",
@@ -545,7 +578,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/421515-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "dd990915d90194d4",
@@ -561,7 +595,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/421552-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "12a922bfc19ca7db",
@@ -577,7 +612,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/421772-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "182373ccadcffe02",
@@ -593,7 +629,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/421793-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "4cc3411793261b8f",
@@ -609,7 +646,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/421828-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "f1126c240beb2b51",
@@ -625,7 +663,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/421871-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "dfd1fd677b72aa96",
@@ -641,7 +680,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/421898-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "d51b5706d6ef0e36",
@@ -657,7 +697,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/421922-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "86b755bc54650723",
@@ -673,7 +714,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/422054-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "6ced0435bc08d068",
@@ -689,7 +731,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/422067-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "d519d5db4a730a6b",
@@ -705,7 +748,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/422319-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "8a8ab6c89375c837",
@@ -721,7 +765,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/422349-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "732ccc7722dad219",
@@ -737,7 +782,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/422582-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "917eb17014263c51",
@@ -753,7 +799,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/422586-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "772524891711b851",
@@ -769,7 +816,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/422663-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "2fb91c7eed03cd6d",
@@ -785,7 +833,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/422877-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "5f9feccc4f55a76c",
@@ -801,7 +850,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/422906-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "1bb92ce2e75dd5cb",
@@ -817,7 +867,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/422933-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "448328cde810ea8c",
@@ -833,7 +884,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/423132-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "e646892497813c80",
@@ -849,7 +901,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/423238-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "151adabb03a0ca89",
@@ -865,7 +918,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/423290-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "6c28a0548e1d82ef",
@@ -881,7 +935,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/423376-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.75
+      "design_probability": 0.75,
+      "value_raw": null
     },
     {
       "id": "f6ab1365609017f8",
@@ -897,7 +952,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/423635-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "d752edfbf54eb6a9",
@@ -913,7 +969,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/423784-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "6aae5df5f362c124",
@@ -929,7 +986,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/423822-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "b76711c349653429",
@@ -945,7 +1003,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/423843-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "a5447180a1777533",
@@ -961,7 +1020,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/423860-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "1b1baa85ee7daf07",
@@ -977,7 +1037,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/424004-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "011f374ceb1289b7",
@@ -993,7 +1054,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/424162-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "22cb9275d62f00e0",
@@ -1009,7 +1071,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/424292-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "9d86bbb30b33e955",
@@ -1025,7 +1088,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/424456-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "ad2554928cb277d5",
@@ -1041,7 +1105,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/424663-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "a176b616d9a14487",
@@ -1057,7 +1122,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/424807-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.15
+      "design_probability": 0.15,
+      "value_raw": null
     },
     {
       "id": "55345ae418d06c0e",
@@ -1073,7 +1139,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/424808-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "a7089d279b8c4ce7",
@@ -1089,7 +1156,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/424862-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "83c49a7d0c10bce2",
@@ -1105,7 +1173,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/425052-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "5355c5fdc277dc53",
@@ -1121,7 +1190,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/425099-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "bb90dd3c57be7b40",
@@ -1137,7 +1207,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/425223-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "992f2cdd9522cd18",
@@ -1153,7 +1224,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/425224-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "5a0bb9330c150efd",
@@ -1169,7 +1241,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/425292-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "af05ea1bd97d3a6a",
@@ -1185,7 +1258,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/425300-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "6f4ac94267a0f63e",
@@ -1201,7 +1275,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/425375-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "095ec669a39055d3",
@@ -1217,7 +1292,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/425808-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.8
+      "design_probability": 0.8,
+      "value_raw": null
     },
     {
       "id": "7c10f2d23fbe20c8",
@@ -1233,7 +1309,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/425852-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "e1dfa70109af57e1",
@@ -1249,7 +1326,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/425956-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "9fcce08dd6b9035d",
@@ -1265,7 +1343,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/425976-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "6092e8dd5ac5afb7",
@@ -1281,7 +1360,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/426041-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "9417593d949e6597",
@@ -1297,7 +1377,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/426091-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "65472c551efc3cfe",
@@ -1313,7 +1394,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/426140-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "cf8bbae71908fb57",
@@ -1329,7 +1411,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/426154-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "46c5783058d9917f",
@@ -1345,7 +1428,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/426163-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.9
+      "design_probability": 0.9,
+      "value_raw": null
     },
     {
       "id": "5910f07f90ebb071",
@@ -1361,7 +1445,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/426221-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "b95a201a4f5be14a",
@@ -1377,7 +1462,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/426631-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "3cab82b5dc166e99",
@@ -1393,7 +1479,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/426641-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "9a326f33c5d0a085",
@@ -1409,7 +1496,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/426672-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "bc3a721633644958",
@@ -1425,7 +1513,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/426791-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "a142d47f7ba2d09f",
@@ -1441,7 +1530,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/426926-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "9f4b18d399f3403e",
@@ -1457,7 +1547,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/426990-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "ddc07a796c77d749",
@@ -1473,7 +1564,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/427155-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.8
+      "design_probability": 0.8,
+      "value_raw": null
     },
     {
       "id": "06bc0bcc326bd0d6",
@@ -1489,7 +1581,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/427166-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "91840b7765f36595",
@@ -1505,7 +1598,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/427285-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "e97db11d7d5c9482",
@@ -1521,7 +1615,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/427370-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "98eab5af7438a34f",
@@ -1537,7 +1632,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/427437-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "be96218b797218a4",
@@ -1553,7 +1649,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/427441-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "bb474846324d6a57",
@@ -1569,7 +1666,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/427677-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "86c323c057ccf082",
@@ -1585,7 +1683,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/427733-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "0e5a48038594817f",
@@ -1601,7 +1700,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/427788-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "204ccb35bfb9805b",
@@ -1617,7 +1717,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/427900-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.3
+      "design_probability": 0.3,
+      "value_raw": null
     },
     {
       "id": "a274e3cd52ad7c83",
@@ -1633,7 +1734,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/427983-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "fa3d6ee33d7d0a88",
@@ -1649,7 +1751,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/427984-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "245e969871115119",
@@ -1665,7 +1768,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/428386-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "97122fd1ddf8d39c",
@@ -1681,7 +1785,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/428478-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "43a2dd30d5163b95",
@@ -1697,7 +1802,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/428638-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "ffd527c5d548a1c5",
@@ -1713,7 +1819,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/428658-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "7afbe590a182ce56",
@@ -1729,7 +1836,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/428707-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "cab0f1e1f5067c4d",
@@ -1745,7 +1853,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/428731-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "42cbdcdaf5e3ee0f",
@@ -1761,7 +1870,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/428835-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "4d76899ab08f280f",
@@ -1777,7 +1887,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/428963-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "3c9ac53d2a40a42b",
@@ -1793,7 +1904,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/429193-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "db12ec6edfff32de",
@@ -1809,7 +1921,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/429274-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "b0319544572d6e04",
@@ -1825,7 +1938,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/429328-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "cd5471b202fe5c68",
@@ -1841,7 +1955,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/429355-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "4cc8fed8b744c153",
@@ -1857,7 +1972,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/429413-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "2a7d975b6397df6e",
@@ -1873,7 +1989,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/429514-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "dc4a368e34ecd2c1",
@@ -1889,7 +2006,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/429649-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "18d61272312c9110",
@@ -1905,7 +2023,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/429748-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "a84e614bb79c813a",
@@ -1921,7 +2040,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/429923-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "33c253694131190a",
@@ -1937,7 +2057,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/430041-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "1ee7045781756d21",
@@ -1953,7 +2074,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/430086-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "c96c56d578b6d232",
@@ -1969,7 +2091,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/430185-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "5d84b4215b9b5fd6",
@@ -1985,7 +2108,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/430207-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "5455cb2277630bf4",
@@ -2001,7 +2125,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/430297-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "ae522092818affba",
@@ -2017,7 +2142,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/430554-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "655f07191872dd6f",
@@ -2033,7 +2159,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/430823-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "4a7262e11dd06e3b",
@@ -2049,7 +2176,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/430929-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "cb4a66e4bd5cebb6",
@@ -2065,7 +2193,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/431049-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "59b0348631c07855",
@@ -2081,7 +2210,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/431056-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "7f81d9dc7983fe0a",
@@ -2097,7 +2227,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/431108-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "2d6f3a281858e0e1",
@@ -2113,7 +2244,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/431198-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "6a7efd562023c44b",
@@ -2129,7 +2261,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/431234-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "c73d21ee65245cf4",
@@ -2145,7 +2278,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/431258-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "d66cdb5098baf339",
@@ -2161,7 +2295,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/431275-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "2d69ee3e106cfd49",
@@ -2177,7 +2312,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/431499-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "6839e59b639b3ac5",
@@ -2193,7 +2329,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/431595-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "afad8515cbf5afa0",
@@ -2209,7 +2346,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/431691-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "7050caf4d9e667bc",
@@ -2225,7 +2363,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/431726-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "4368ea2c5afccdbe",
@@ -2241,7 +2380,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/431848-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "3a5a82e5808c6dbc",
@@ -2257,7 +2397,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/431896-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "b86a7f8426c49407",
@@ -2273,7 +2414,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/432061-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "65da261bf67220fe",
@@ -2289,7 +2431,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/432183-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "d82bd026cdcf904b",
@@ -2305,7 +2448,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/432419-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "2b771efcfa9b4c8d",
@@ -2321,7 +2465,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/432549-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "fb215173d3b36cb8",
@@ -2337,7 +2482,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/432582-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "5e41cf2bf7b0a277",
@@ -2353,7 +2499,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/432669-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "868dc396a1617672",
@@ -2369,7 +2516,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/432817-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "be3a39ac2e9f40c0",
@@ -2385,7 +2533,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/432940-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.6
+      "design_probability": 0.6,
+      "value_raw": null
     },
     {
       "id": "b9c1665f80041637",
@@ -2401,7 +2550,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/433000-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "e277df48f3f3bd10",
@@ -2417,7 +2567,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/433110-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "d6d927ec29daa676",
@@ -2433,7 +2584,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/433183-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "400ad1b6ee66c70e",
@@ -2449,7 +2601,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/433229-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "3fca0b00a2dd90cf",
@@ -2465,7 +2618,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/433276-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "c1a65286c3e1a842",
@@ -2481,7 +2635,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/433381-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "a0ed99eb903ef27b",
@@ -2497,7 +2652,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/433698-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "bc049ba97db003db",
@@ -2513,7 +2669,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/433790-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "4c2f1372b583525c",
@@ -2529,7 +2686,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/433794-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "3ef535c5124e9415",
@@ -2545,7 +2703,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/434050-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "6515ea6c8e8d27eb",
@@ -2561,7 +2720,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/434113-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "cb23c32ecff163c9",
@@ -2577,7 +2737,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/434238-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "ceba9ed9370ef05b",
@@ -2593,7 +2754,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/434789-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "dad20e866260d687",
@@ -2609,7 +2771,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/434825-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "fff9712f079f21c8",
@@ -2625,7 +2788,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/434856-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "806a5bc6a59b6b55",
@@ -2641,7 +2805,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/434941-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "cb95f4d4b5a349e0",
@@ -2657,7 +2822,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/435027-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "337081dac46e1df9",
@@ -2673,7 +2839,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/435062-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "537d3a57d4dd35e4",
@@ -2689,7 +2856,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/435449-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "0a334143eded9e90",
@@ -2705,7 +2873,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/435504-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "875dc2eb92e9eb39",
@@ -2721,7 +2890,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/435646-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.9
+      "design_probability": 0.9,
+      "value_raw": null
     },
     {
       "id": "2266b024a0d872e8",
@@ -2737,7 +2907,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436042-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "73c9cebb0ee4af49",
@@ -2753,7 +2924,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436113-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.8
+      "design_probability": 0.8,
+      "value_raw": null
     },
     {
       "id": "31858a8bd4da484e",
@@ -2769,7 +2941,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436126-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "98af00689107bc73",
@@ -2785,7 +2958,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436146-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "2a2dd2685f7a62c5",
@@ -2801,7 +2975,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436200-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.8
+      "design_probability": 0.8,
+      "value_raw": null
     },
     {
       "id": "17498b2a9993108c",
@@ -2817,7 +2992,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436223-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "cbd0671f22f7b664",
@@ -2833,7 +3009,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436264-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.9
+      "design_probability": 0.9,
+      "value_raw": null
     },
     {
       "id": "b254059e1325af99",
@@ -2849,7 +3026,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436273-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "6fe69109e5822550",
@@ -2865,7 +3043,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436310-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.15
+      "design_probability": 0.15,
+      "value_raw": null
     },
     {
       "id": "40a6b728a28bdc59",
@@ -2881,7 +3060,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436370-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "dd79cb8ab80b993f",
@@ -2897,7 +3077,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436379-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "a2f2a2aa89487659",
@@ -2913,7 +3094,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436399-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "c75cd63648a0281b",
@@ -2929,7 +3111,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436407-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "1efe5c6aeaab4b67",
@@ -2945,7 +3128,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/436783-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "72c3f08cd244dac0",
@@ -2961,7 +3145,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/437004-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "a0ded81d11aa0f46",
@@ -2977,7 +3162,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/437035-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "4f9d99b181fa4b1f",
@@ -2993,7 +3179,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/437230-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "5557c3f1265214db",
@@ -3009,7 +3196,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/437359-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "e7f9a0a5c0228dcf",
@@ -3025,7 +3213,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/437361-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "f198d866da9fdfb9",
@@ -3041,7 +3230,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/437375-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "33f20328d4d23960",
@@ -3057,7 +3247,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/437494-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "60910941dbd06197",
@@ -3073,7 +3264,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/437514-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "c2ca3f32a8258b9d",
@@ -3089,7 +3281,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/437639-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "c195cd9601aabb45",
@@ -3105,7 +3298,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/437793-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "d3d0c542bd66efe9",
@@ -3121,7 +3315,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/437797-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "dc775185a5d01d26",
@@ -3137,7 +3332,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/437883-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "9fd61e47ed852cc4",
@@ -3153,7 +3349,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/437922-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "7c8c04e72ab969a3",
@@ -3169,7 +3366,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/438042-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "283e4481a18b53a2",
@@ -3185,7 +3383,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/438108-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "6e6db8de2845cf32",
@@ -3201,7 +3400,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/438271-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "bfab06dc6735f5a1",
@@ -3217,7 +3417,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/438313-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "94c44cb4abe9f74c",
@@ -3233,7 +3434,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/438314-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "f03f1806fff4b666",
@@ -3249,7 +3451,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/438316-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "c4bdd22bcbf85533",
@@ -3265,7 +3468,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/438356-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "44ea448397cd3a53",
@@ -3281,7 +3485,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/438500-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "50c1a5ba219a843c",
@@ -3297,7 +3502,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/438728-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "2372fb8eed42035f",
@@ -3313,7 +3519,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/438934-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "4e56ee15504166f5",
@@ -3329,7 +3536,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/357963-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "e55e70673fa836a6",
@@ -3345,7 +3553,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/357986-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "6113a25079976fed",
@@ -3361,7 +3570,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/358713-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.8
+      "design_probability": 0.8,
+      "value_raw": null
     },
     {
       "id": "2a2f3f7112001dcf",
@@ -3377,7 +3587,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/358714-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "25f4f3e45fa47998",
@@ -3393,7 +3604,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/358808-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "acdea8aaf4153bb5",
@@ -3409,7 +3621,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/358945-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "6a3fac0956e94385",
@@ -3425,7 +3638,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/358996-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.05
+      "design_probability": 0.05,
+      "value_raw": null
     },
     {
       "id": "2507be0d8ef021d9",
@@ -3441,7 +3655,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/359027-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "c7913a8917589ebe",
@@ -3457,7 +3672,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/359197-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.45
+      "design_probability": 0.45,
+      "value_raw": null
     },
     {
       "id": "fa2b71432eb54c3b",
@@ -3473,7 +3689,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/359547-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "ee21cf1bb4180676",
@@ -3489,7 +3706,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/359780-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "f03a2b01eba302b3",
@@ -3505,7 +3723,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/359984-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "f0abdcdf485514a5",
@@ -3521,7 +3740,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/360205-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "8d6819669682e8db",
@@ -3537,7 +3757,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/360328-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "4544ed647d264cb1",
@@ -3553,7 +3774,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/360360-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.5
+      "design_probability": 0.5,
+      "value_raw": null
     },
     {
       "id": "4b489deaa78dedaf",
@@ -3569,7 +3791,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/360541-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.9
+      "design_probability": 0.9,
+      "value_raw": null
     },
     {
       "id": "80688542c7df8958",
@@ -3585,7 +3808,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/360782-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.2
+      "design_probability": 0.2,
+      "value_raw": null
     },
     {
       "id": "5b9f576a378d0994",
@@ -3601,7 +3825,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/360853-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "77aa836a8a142ad4",
@@ -3617,7 +3842,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/360914-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "soe",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "b342d701adedd4e5",
@@ -3633,7 +3859,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/361079-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "public",
-      "design_probability": 0.3
+      "design_probability": 0.3,
+      "value_raw": null
     },
     {
       "id": "ae9ef77468784d14",
@@ -3649,7 +3876,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/361385-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "78f2ceb63e65800f",
@@ -3665,7 +3893,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/361556-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "industrial",
-      "design_probability": 0.65
+      "design_probability": 0.65,
+      "value_raw": null
     },
     {
       "id": "46f8a5e23fb9799f",
@@ -3681,7 +3910,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/361974-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.95
+      "design_probability": 0.95,
+      "value_raw": null
     },
     {
       "id": "13c5a49d8fcb6bf7",
@@ -3697,7 +3927,8 @@
       "url": "https://ted.europa.eu/en/notice/-/detail/362017-2026",
       "source": "TED (ted.europa.eu)",
       "sector": "other",
-      "design_probability": 0.8
+      "design_probability": 0.8,
+      "value_raw": null
     }
   ]
 }

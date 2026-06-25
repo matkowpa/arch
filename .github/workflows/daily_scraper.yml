@@ -2,9 +2,9 @@ name: Daily Tender Scraper
 
 # ── Triggers ──────────────────────────────────────────────────────────────────
 on:
-  # Run automatically every day at 05:00 UTC
+  # Run twice a day at 05:00 and 17:00 UTC
   schedule:
-    - cron: '0 5 * * *'
+    - cron: '0 5,17 * * *'
 
   # Push a commit that touches .trigger to run the scraper immediately on GitHub
   push:
@@ -16,9 +16,9 @@ on:
   workflow_dispatch:
     inputs:
       lookback_days:
-        description: 'Days to look back for tenders (default: 30)'
+        description: 'Days to look back for tenders (default: 3)'
         required: false
-        default: '30'
+        default: '3'
         type: string
 
 # ── Repository write permissions (needed to commit data + docs) ───────────────
@@ -53,10 +53,10 @@ jobs:
           pip install -r requirements.txt
 
       # 4. Run the scraper
-      #    LOOKBACK_DAYS falls back to 30 for scheduled runs
+      #    LOOKBACK_DAYS falls back to 3 for scheduled runs
       - name: Run scraper
         env:
-          LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '30' }}
+          LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '3' }}
         run: python scraper.py
 
       # 5. Commit any new data/ and docs/ files back to the repo.
