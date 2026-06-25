@@ -463,6 +463,10 @@ def _extract_ted_item(notice: dict, results: list[dict]) -> None:
     deadline_raw = deadline_list[0] if deadline_list else None
     deadline = _parse_date(str(deadline_raw).split("+")[0] if deadline_raw else None)
 
+    # Skip notices whose submission deadline has already passed — not useful for the user
+    if deadline and date.fromisoformat(deadline) < TODAY:
+        return
+
     title_obj = (notice.get("title-proc") or notice.get("title-lot") or notice.get("title-glo") or "")
     title = _ted_multilang(title_obj) or pub_num
 
