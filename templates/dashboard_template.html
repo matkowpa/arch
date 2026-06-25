@@ -517,6 +517,24 @@
             other: { label: 'Inne', cls: 'sector-other', color: 'var(--c-other)' },
         };
 
+        /* ── Design-only probability badge ─────────────── */
+        function designBadge(prob) {
+            if (prob == null) return '';
+            const pct = Math.round(prob * 100);
+            let bg, fg, label;
+            if (pct >= 70) {
+                bg = '#dcfce7'; fg = '#166534'; label = 'Tylko projekt';
+            } else if (pct >= 40) {
+                bg = '#fef9c3'; fg = '#854d0e'; label = 'Możliwe: mieszany';
+            } else {
+                bg = '#fee2e2'; fg = '#991b1b'; label = 'Zaprojektuj i wybuduj';
+            }
+            return `<span title="Szacowane prawdopodobieństwo, że przetarg dotyczy wyłącznie opracowania dokumentacji projektowej (nie obejmuje realizacji budowy)" style="display:inline-flex; align-items:center; gap:4px; font-size:9px; font-weight:600; letter-spacing:0.08em; padding:2px 7px; border-radius:3px; background:${bg}; color:${fg}; cursor:default;">
+  <svg width="8" height="8" viewBox="0 0 16 16" fill="${fg}"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Zm.75 3.5v4.25l3 1.73-.77 1.33-3.48-2V4.5h1.25Z"/></svg>
+  ${pct}%&ensp;${label}
+</span>`;
+        }
+
         /* ── Single tender card ──────────────────────────── */
         function tenderCard(t) {
             const s = SECTORS[t.sector] || SECTORS.other;
@@ -559,6 +577,9 @@
 
       <!-- Description -->
       ${t.description ? `<p style="font-size:11px; color:var(--mid); margin:6px 0 0; line-height:1.5; border-left:2px solid var(--border); padding-left:8px;">${esc(t.description)}</p>` : ''}
+
+      <!-- Design probability badge -->
+      ${t.design_probability != null ? `<div style="margin-top:8px;">${designBadge(t.design_probability)}</div>` : ''}
 
       <!-- Dates + value row -->
       <div style="margin-top:11px; padding-top:11px; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; gap:18px;">

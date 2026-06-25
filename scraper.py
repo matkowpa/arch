@@ -211,6 +211,88 @@ def _classify_sector(title: str, entity: str) -> str:
     return "other"
 
 
+# Patterns used by _score_design_only
+_PAT_DESIGN_STRONG = re.compile(
+    r"dokumentacja\s+projektow|projekt\s+architektoniczny|opracowanie\s+dokumentacji"
+    r"|projekt\s+budowlano.?wykonawczy|wielobranżow\w+\s+dokumentacj"
+    r"|dokumentacji\s+projektowo|koncepcja\s+architektonicz",
+    re.IGNORECASE,
+)
+_PAT_DESIGN_MOD = re.compile(
+    r"\bprojekt\s+budowlany\b|\bprojekt\s+wykonawczy\b|\bopracowanie\s+projektu\b"
+    r"|\bkosztorys\b|kosztorysow|studium\s+wykonalności",
+    re.IGNORECASE,
+)
+_PAT_DESIGN_BUILD_STRONG = re.compile(
+    r"zaprojektuj\s+i\s+wybuduj|zaprojektowanie\s+i\s+wybudowanie"
+    r"|w\s+systemie\s+zaprojektuj|zaprojektowania\s+i\s+wybudowania",
+    re.IGNORECASE,
+)
+_PAT_DESIGN_BUILD_MOD = re.compile(
+    r"roboty\s+budowlane|wykonanie\s+robót|realizacja\s+inwestycji"
+    r"|realizacja\s+budow|program\s+funkcjonalno.użytkowy|\bPFU\b",
+    re.IGNORECASE,
+)
+
+
+def _score_design_only(tender: dict) -> float:
+    """Estimate probability (0.0–1.0) that the tender is for a pure design commission
+    (opracowanie dokumentacji projektowej) rather than a combined design+build contract
+    (zaprojektuj i wybuduj / roboty budowlane).
+
+    Rules are heuristic: they weight keyword presence in title/description, CPV code
+    ranges, procedure type, and estimated contract value.
+    """
+    text = " ".join(filter(None, [tender.get("title"), tender.get("description")])
+    )
+    cpv = tender.get("cpv") or ""
+    proc = (tender.get("procedure_type") or "").lower()
+    value_str = tender.get("value") or ""
+
+    score = 0.5
+
+    # --- Keyword signals (applied to title + description) ---
+    if _PAT_DESIGN_BUILD_STRONG.search(text):
+        score -= 0.45  # very strong sign: explicit design+build phrasing
+    if _PAT_DESIGN_BUILD_MOD.search(text):
+        score -= 0.20  # moderate sign: construction works terminology
+    if _PAT_DESIGN_STRONG.search(text):
+        score += 0.30  # strong sign: documentation / architectural design phrasing
+    if _PAT_DESIGN_MOD.search(text):
+        score += 0.15  # moderate sign: project type names
+
+    # --- CPV code signals ---
+    if re.match(r"71[2-3]", cpv):   # 712xxxxx / 713xxxxx = architectural/engineering services
+        score += 0.15
+    if cpv.startswith("45"):         # 45xxxxxx = construction works
+        score -= 0.35
+
+    # --- Procedure type signal ---
+    if re.search(r"usług|service", proc):
+        score += 0.10
+    if re.search(r"roboty|work", proc):
+        score -= 0.25
+
+    # --- Value heuristic: large contracts usually include construction ---
+    # Value is formatted as "1 234 567,89 PLN" (Polish locale)
+    m = re.search(r"[\d ]+,[\d]{2}", value_str)
+    if m:
+        try:
+            num = float(m.group(0).replace(" ", "").replace(",", "."))
+            if num > 10_000_000:
+                score -= 0.30
+            elif num > 5_000_000:
+                score -= 0.15
+            elif num < 200_000:
+                score += 0.15
+            elif num < 500_000:
+                score += 0.08
+        except ValueError:
+            pass
+
+    return round(max(0.05, min(0.95, score)), 2)
+
+
 def _format_value(raw) -> Optional[str]:
     """Format a raw numeric value into a readable PLN string."""
     if raw is None:
@@ -931,6 +1013,10 @@ def main() -> None:
     )
 
     new_tenders, seen_ids = deduplicate(all_tenders, seen_ids)
+
+    # Score each tender with design-only probability
+    for t in new_tenders:
+        t["design_probability"] = _score_design_only(t)
 
     save_history(seen_ids)
     save_daily_report(new_tenders)

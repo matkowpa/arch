@@ -16,7 +16,8 @@
       "description": "Projekt architektoniczny i wykonawczy centrum badawczo-rozwojowego – budynek laboratoryjno-biurowy ok. 4 500 m², instalacje branżowe i zagospodarowanie terenu.",
       "value": "8 750 000,00 PLN",
       "cpv": "71200000",
-      "procedure_type": "Tryb podstawowy (art. 275 pkt 1)"
+      "procedure_type": "Tryb podstawowy (art. 275 pkt 1)",
+      "design_probability": 0.8
     },
     {
       "id": "a1b2c3d4e5f60002",
@@ -31,7 +32,8 @@
       "description": "Dokumentacja projektowa rozbudowy siedziby o nowy segment biurowy i halę techniczną, łączna powierzchnia zabudowy ok. 2 800 m².",
       "value": "3 200 000,00 PLN",
       "cpv": "71221000",
-      "procedure_type": "Tryb podstawowy (art. 275 pkt 1)"
+      "procedure_type": "Tryb podstawowy (art. 275 pkt 1)",
+      "design_probability": 0.95
     },
     {
       "id": "a1b2c3d4e5f60003",
@@ -46,7 +48,8 @@
       "description": "Projekt architektoniczny nowego budynku biurowo-usługowego – 6 kondygnacji, pow. użytkowa 6 200 m², rejon Dworca Warszawa Zachodnia.",
       "value": null,
       "cpv": "71221000",
-      "procedure_type": "Przetarg nieograniczony"
+      "procedure_type": "Przetarg nieograniczony",
+      "design_probability": 0.95
     },
     {
       "id": "a1b2c3d4e5f60004",
@@ -61,7 +64,8 @@
       "description": "Projekt wykonawczy hali magazynowo-logistycznej z częścią socjalno-biurową, pow. ok. 12 000 m², projekt konstrukcji stalowej i instalacji.",
       "value": "2 450 000,00 PLN",
       "cpv": "71320000",
-      "procedure_type": "Przetarg nieograniczony"
+      "procedure_type": "Przetarg nieograniczony",
+      "design_probability": 0.8
     },
     {
       "id": "a1b2c3d4e5f60005",
@@ -76,7 +80,8 @@
       "description": "Dokumentacja projektowa (koncepcja, projekt budowlany, projekt wykonawczy) dla budynku urzędu miejskiego – rozbudowa i modernizacja istniejącego obiektu.",
       "value": "1 890 000,00 PLN",
       "cpv": "71221000",
-      "procedure_type": "Tryb podstawowy (art. 275 pkt 2)"
+      "procedure_type": "Tryb podstawowy (art. 275 pkt 2)",
+      "design_probability": 0.95
     },
     {
       "id": "a1b2c3d4e5f60006",
@@ -91,7 +96,8 @@
       "description": "Projekt architektoniczny rozbudowy szpitala – nowe skrzydło onkologiczne: 120 łóżek, sale operacyjne, diagnostyka obrazowa. Pow. ok. 8 000 m².",
       "value": "14 600 000,00 PLN",
       "cpv": "71221000",
-      "procedure_type": "Przetarg nieograniczony"
+      "procedure_type": "Przetarg nieograniczony",
+      "design_probability": 0.65
     },
     {
       "id": "a1b2c3d4e5f60007",
@@ -106,7 +112,8 @@
       "description": "Projekt budowlano-wykonawczy nowej biblioteki miejskiej – budynek parterowy z antresolą, pow. 1 200 m², zagospodarowanie terenu i mała architektura.",
       "value": "980 000,00 PLN",
       "cpv": "71221000",
-      "procedure_type": "Tryb podstawowy (art. 275 pkt 1)"
+      "procedure_type": "Tryb podstawowy (art. 275 pkt 1)",
+      "design_probability": 0.95
     },
     {
       "id": "a1b2c3d4e5f60008",
@@ -121,7 +128,8 @@
       "description": "Projekt rozbudowy Starostwa Powiatowego – nowe skrzydło administracyjne ok. 1 600 m².",
       "value": "1 150 000,00 PLN",
       "cpv": "71221000",
-      "procedure_type": "Tryb podstawowy (art. 275 pkt 1)"
+      "procedure_type": "Tryb podstawowy (art. 275 pkt 1)",
+      "design_probability": 0.95
     },
     {
       "id": "a1b2c3d4e5f60009",
@@ -136,7 +144,8 @@
       "description": "Projekt architektoniczny hali produkcyjno-magazynowej 18 000 m², konstrukcja stalowa klasy A, biurowiec modułowy i infrastruktura techniczna.",
       "value": null,
       "cpv": "71320000",
-      "procedure_type": "Przetarg nieograniczony"
+      "procedure_type": "Przetarg nieograniczony",
+      "design_probability": 0.95
     },
     {
       "id": "a1b2c3d4e5f60010",
@@ -151,7 +160,8 @@
       "description": "Projekt wykonawczy zakładu produkcyjnego elementów prefabrykowanych żelbetowych, projekt technologiczny linii produkcyjnej i układu komunikacyjnego.",
       "value": "3 600 000,00 PLN",
       "cpv": "71320000",
-      "procedure_type": "Negocjacje bez ogłoszenia"
+      "procedure_type": "Negocjacje bez ogłoszenia",
+      "design_probability": 0.8
     },
     {
       "id": "a1b2c3d4e5f60011",
@@ -166,7 +176,8 @@
       "description": "Design and construction documentation for a new logistics and distribution centre – warehouse, offices and loading docks. Gross floor area approx. 22 000 m².",
       "value": "3 200 000,00 EUR",
       "cpv": "71320000",
-      "procedure_type": "Open procedure"
+      "procedure_type": "Open procedure",
+      "design_probability": 0.95
     },
     {
       "id": "a1b2c3d4e5f60012",
@@ -181,7 +192,8 @@
       "description": "Architectural design for modernisation and partial reconstruction of an existing administrative building – energy upgrade and facade renovation.",
       "value": "1 800 000,00 EUR",
       "cpv": "71200000",
-      "procedure_type": "Open procedure"
+      "procedure_type": "Open procedure",
+      "design_probability": 0.95
     },
     {
       "id": "a1b2c3d4e5f60013",
@@ -196,7 +208,8 @@
       "description": "Projekt budowlany i wykonawczy muzeum regionalnego – budynek ekspozycyjny 2 500 m², sala wielofunkcyjna, zaplecze konserwatorskie i zagospodarowanie otoczenia.",
       "value": "5 400 000,00 PLN",
       "cpv": "71221000",
-      "procedure_type": "Tryb podstawowy (art. 275 pkt 2)"
+      "procedure_type": "Tryb podstawowy (art. 275 pkt 2)",
+      "design_probability": 0.65
     }
   ]
 }
