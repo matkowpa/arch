@@ -368,75 +368,143 @@ def fetch_ddg(queries: list[str]) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# Source 2: TED (Tenders Electronic Daily) – RSS feeds
+# Source 2: TED (Tenders Electronic Daily) – REST API v3
 # ---------------------------------------------------------------------------
 
-_TED_RSS_BASE = "https://ted.europa.eu/TED/search/result.do"
+_TED_API_V3 = "https://api.ted.europa.eu/v3/notices/search"
+_TED_SEARCH_FIELDS = [
+    "publication-number", "notice-subtype", "dispatch-date", "issue-date",
+    "title-proc", "title-lot", "title-glo",
+    "buyer-name", "buyer-city", "buyer-country",
+    "description-lot", "description-part", "description-glo",
+    "deadline-receipt-tender-date-lot", "deadline-date-lot",
+    "estimated-value-glo", "estimated-value-cur-glo",
+    "classification-cpv", "procedure-type",
+]
+
+
+def _ted_multilang(obj, langs=("pol", "eng", "fre")) -> str:
+    """Extract a plain string from a multilingual TED v3 field.
+
+    Fields arrive as either:
+    - ``{"pol": "text"}`` (str value)
+    - ``{"pol": ["text1", "text2"]}`` (list value, join)
+    - a flat ``["val1", "val2"]`` list
+    - a plain ``str``
+    """
+    if not obj:
+        return ""
+    if isinstance(obj, str):
+        return obj[:500]
+    if isinstance(obj, list):
+        # flat list of strings / values
+        return " ".join(str(x) for x in obj if x)[:500]
+    if isinstance(obj, dict):
+        for lang in langs:
+            v = obj.get(lang)
+            if v is None:
+                continue
+            if isinstance(v, list):
+                return " ".join(str(x) for x in v if x)[:500]
+            return str(v)[:500]
+        # fallback: first value in dict
+        v = next(iter(obj.values()), "")
+        if isinstance(v, list):
+            return " ".join(str(x) for x in v if x)[:500]
+        return str(v)[:500]
+    return str(obj)[:500]
 
 
 def fetch_ted() -> list[dict]:
-    """Fetch architecture-related tenders in Poland via TED CPV RSS feeds."""
+    """Fetch architecture-related tenders in Poland via TED REST API v3.
+
+    Uses the expert-search query language: ``PC`` = CPV code, ``RC`` = country,
+    ``PD`` = publication date (YYYYMMDD).
+    """
     results: list[dict] = []
-    for cpv in _ARCH_CPV_CODES[:4]:  # limit to 4 CPV codes to avoid overloading
-        try:
-            _fetch_ted_rss(cpv, results)
-        except Exception as exc:
-            log.warning("[TED] RSS CPV %s failed: %s", cpv, exc)
+    since = (datetime.now(tz=timezone.utc) - timedelta(days=LOOKBACK_DAYS)).strftime("%Y%m%d")
+    cpv_clause = " OR ".join(f"PC = {c}" for c in _ARCH_CPV_CODES)
+    query = f"({cpv_clause}) AND RC = POL AND PD >= {since}"
+    try:
+        resp = requests.post(
+            _TED_API_V3,
+            json={"query": query, "page": 1, "limit": 100, "scope": "ALL",
+                  "fields": _TED_SEARCH_FIELDS},
+            headers={"Accept": "application/json", "Content-Type": "application/json",
+                     **_random_headers()},
+            timeout=30,
+        )
+        if not resp.ok:
+            log.warning("[TED] API v3 returned %d: %s", resp.status_code, resp.text[:200])
+            return results
+        data = resp.json()
+        notices = data.get("notices") or []
+        log.debug("[TED] API v3 returned %d notices", len(notices))
+        for notice in notices:
+            _extract_ted_item(notice, results)
+    except Exception as exc:
+        log.warning("[TED] API v3 failed: %s", exc)
     log.info("[TED] Collected %d results", len(results))
     return results
 
 
-def _fetch_ted_rss(cpv: str, results: list[dict]) -> None:
-    url = (
-        f"{_TED_RSS_BASE}?sortColumn=0&countryCode=POL"
-        f"&cpvCodes={cpv}&orderType=YEAR_DESC&format=RSS"
+def _extract_ted_item(notice: dict, results: list[dict]) -> None:
+    pub_num = str(notice.get("publication-number") or "").strip()
+    if not pub_num:
+        return
+    url = f"https://ted.europa.eu/en/notice/-/detail/{pub_num}"
+
+    raw_date = notice.get("dispatch-date") or notice.get("issue-date") or ""
+    pub_date = _parse_date(str(raw_date).split("+")[0].split("Z")[0] if raw_date else None)
+    if not _within_window(pub_date):
+        return
+
+    deadline_list = notice.get("deadline-receipt-tender-date-lot") or notice.get("deadline-date-lot") or []
+    deadline_raw = deadline_list[0] if deadline_list else None
+    deadline = _parse_date(str(deadline_raw).split("+")[0] if deadline_raw else None)
+
+    title_obj = (notice.get("title-proc") or notice.get("title-lot") or notice.get("title-glo") or "")
+    title = _ted_multilang(title_obj) or pub_num
+
+    entity_obj = notice.get("buyer-name") or ""
+    entity = _ted_multilang(entity_obj)
+
+    desc_obj = (notice.get("description-lot") or notice.get("description-part")
+                or notice.get("description-glo") or "")
+    description = (_ted_multilang(desc_obj) or None)
+    if description:
+        description = description[:300]
+
+    cpv_list = notice.get("classification-cpv") or []
+    arch_cpv = next(
+        (str(c) for c in cpv_list if str(c)[:5] in {"71200", "71220", "71221", "71222", "71240", "71250", "71320"}),
+        str(cpv_list[0]) if cpv_list else None,
     )
-    time.sleep(random.uniform(*_DELAY_RANGE))
-    feed = feedparser.parse(url, request_headers=_random_headers())
-    log.debug("[TED] RSS CPV %s: %d entries", cpv, len(feed.entries))
-    for entry in feed.entries:
-        link = entry.get("link", "").strip()
-        if not link:
-            continue
-        pub_date = _parse_date(entry.get("published") or entry.get("updated"))
-        if not _within_window(pub_date):
-            continue
-        title = entry.get("title", "").strip()
-        summary = entry.get("summary", "")
-        # Try to extract buyer name from RSS summary
-        entity = ""
-        for pattern in [
-            r"Authority[:\s]+([^\n|<]+)",
-            r"Contracting authority[:\s]+([^\n|<]+)",
-            r"Organisation[:\s]+([^\n|<]+)",
-            r"Zamawiający[:\s]+([^\n|<]+)",
-        ]:
-            m = re.search(pattern, summary, re.IGNORECASE)
-            if m:
-                entity = m.group(1).strip()[:200]
-                break
-        ted_pub_num = None
-        m_ted = re.search(r'/notice/([^/?#]+)', link)
-        if m_ted:
-            ted_pub_num = m_ted.group(1)
-        ted_details = _parse_ted_summary(summary)
-        results.append(
-            {
-                "id": _make_id(link),
-                "proc_id": ted_pub_num,
-                "title": title,
-                "entity": entity,
-                "publication_date": pub_date,
-                "deadline": ted_details.get("deadline"),
-                "description": ted_details.get("description"),
-                "value": ted_details.get("value"),
-                "cpv": ted_details.get("cpv"),
-                "procedure_type": ted_details.get("procedure_type"),
-                "url": link,
-                "source": "TED (EU)",
-                "sector": _classify_sector(title, entity),
-            }
-        )
+
+    proc_type = _ted_multilang(notice.get("procedure-type") or "").capitalize() or None
+
+    val_raw = notice.get("estimated-value-glo")
+    cur_raw = notice.get("estimated-value-cur-glo")
+    value = None
+    if val_raw is not None:
+        cur = _ted_multilang(cur_raw) if cur_raw else "EUR"
+        value = _format_value(val_raw) or f"{float(val_raw):,.2f} {cur}"
+
+    results.append({
+        "id": _make_id(url),
+        "proc_id": pub_num,
+        "title": title,
+        "entity": entity,
+        "publication_date": pub_date,
+        "deadline": deadline,
+        "description": description,
+        "value": value,
+        "cpv": arch_cpv,
+        "procedure_type": proc_type,
+        "url": url,
+        "source": "TED (ted.europa.eu)",
+        "sector": _classify_sector(title, entity),
+    })
 
 
 # ---------------------------------------------------------------------------
@@ -476,7 +544,7 @@ def fetch_bzp() -> list[dict]:
 
 
 def _bzp_search(extra_params: dict, results: list[dict], tag: str) -> None:
-    params = {
+    body = {
         "pageNumber": 1,
         "pageSize": 30,
         "sortBy": "publicationDate",
@@ -484,19 +552,21 @@ def _bzp_search(extra_params: dict, results: list[dict], tag: str) -> None:
         **extra_params,
     }
     headers = {**_random_headers(), **_BZP_HEADERS}
-    resp = _get(
+    # The BZP Angular frontend issues POST requests to the API; GET returns the SPA shell.
+    resp = requests.post(
         f"{_BZP_API_BASE}/opi/og/searchNotice",
-        params=params,
+        json=body,
         headers=headers,
+        timeout=20,
     )
-    if resp.status_code in (404, 403):
-        log.debug("[BZP] Endpoint returned %d for %s – skipping", resp.status_code, tag)
+    if resp.status_code in (404, 403, 405):
+        log.warning("[BZP] Endpoint returned %d for %s – skipping", resp.status_code, tag)
         return
     resp.raise_for_status()
     # Guard: endpoint may return HTML redirect instead of JSON
     ct = resp.headers.get("Content-Type", "")
     if "html" in ct or not resp.content:
-        log.debug("[BZP] Non-JSON response (%s) for %s – skipping", ct, tag)
+        log.warning("[BZP] Non-JSON response (%s) for %s – BZP API may require auth", ct, tag)
         return
 
     data = resp.json()
