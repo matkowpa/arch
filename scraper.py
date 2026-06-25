@@ -420,28 +420,40 @@ def fetch_ted() -> list[dict]:
 
     Uses the expert-search query language: ``PC`` = CPV code, ``RC`` = country,
     ``PD`` = publication date (YYYYMMDD).
+
+    The API returns results in ascending publication-date order with no sort
+    parameter available, so a 30-day window with limit=100 would only return
+    the oldest 100 matches and miss the most recent notices. We therefore use
+    a short 7-day window and paginate through ALL pages to ensure we capture
+    everything recently published.
     """
     results: list[dict] = []
-    since = (datetime.now(tz=timezone.utc) - timedelta(days=LOOKBACK_DAYS)).strftime("%Y%m%d")
+    # 7-day window ensures we get genuinely recent notices (not a month-old batch)
+    since = (datetime.now(tz=timezone.utc) - timedelta(days=7)).strftime("%Y%m%d")
     cpv_clause = " OR ".join(f"PC = {c}" for c in _ARCH_CPV_CODES)
     query = f"({cpv_clause}) AND RC = POL AND PD >= {since}"
+    page = 1
     try:
-        resp = requests.post(
-            _TED_API_V3,
-            json={"query": query, "page": 1, "limit": 100, "scope": "ALL",
-                  "fields": _TED_SEARCH_FIELDS},
-            headers={"Accept": "application/json", "Content-Type": "application/json",
-                     **_random_headers()},
-            timeout=30,
-        )
-        if not resp.ok:
-            log.warning("[TED] API v3 returned %d: %s", resp.status_code, resp.text[:200])
-            return results
-        data = resp.json()
-        notices = data.get("notices") or []
-        log.debug("[TED] API v3 returned %d notices", len(notices))
-        for notice in notices:
-            _extract_ted_item(notice, results)
+        while page <= 10:  # safety cap
+            resp = requests.post(
+                _TED_API_V3,
+                json={"query": query, "page": page, "limit": 100, "scope": "ALL",
+                      "fields": _TED_SEARCH_FIELDS},
+                headers={"Accept": "application/json", "Content-Type": "application/json",
+                         **_random_headers()},
+                timeout=30,
+            )
+            if not resp.ok:
+                log.warning("[TED] API v3 page %d returned %d: %s", page, resp.status_code, resp.text[:200])
+                break
+            batch = resp.json().get("notices") or []
+            log.debug("[TED] API v3 page %d: %d notices", page, len(batch))
+            for notice in batch:
+                _extract_ted_item(notice, results)
+            if len(batch) < 100:  # last page reached
+                break
+            page += 1
+            time.sleep(random.uniform(*_DELAY_RANGE))
     except Exception as exc:
         log.warning("[TED] API v3 failed: %s", exc)
     log.info("[TED] Collected %d results", len(results))
