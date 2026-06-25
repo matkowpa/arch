@@ -211,6 +211,91 @@ def _classify_sector(title: str, entity: str) -> str:
     return "other"
 
 
+def _format_value(raw) -> Optional[str]:
+    """Format a raw numeric value into a readable PLN string."""
+    if raw is None:
+        return None
+    try:
+        v = float(str(raw).replace("\xa0", "").replace(" ", "").replace(",", "."))
+        formatted = f"{v:,.2f}"  # "1,234,567.89"
+        # Convert to Polish locale: space thousands, comma decimal
+        formatted = formatted.replace(".", "\x00").replace(",", " ").replace("\x00", ",")
+        return formatted + " PLN"
+    except (ValueError, TypeError):
+        s = str(raw).strip()
+        return s if s else None
+
+
+def _parse_ted_summary(summary: str) -> dict:
+    """Extract structured fields (cpv, value, procedure_type, deadline, description)
+    from a TED RSS entry summary HTML string."""
+    result: dict = {"description": None, "value": None, "cpv": None,
+                    "procedure_type": None, "deadline": None}
+    if not summary:
+        return result
+    try:
+        soup = BeautifulSoup(summary, "lxml")
+        # Build a flat label→value map from table rows
+        for tr in soup.find_all("tr"):
+            cells = [td.get_text(" ", strip=True) for td in tr.find_all(["td", "th"])]
+            if len(cells) >= 2:
+                label, value = cells[0].lower(), cells[1].strip()
+                if any(k in label for k in ("cpv", "common procurement")):
+                    m = re.search(r"(7[0-9]\d{6})", value)
+                    if m:
+                        result["cpv"] = m.group(1)
+                elif any(k in label for k in ("value", "wartość", "estimated")):
+                    result["value"] = re.sub(r"\s+", " ", value)[:60]
+                elif any(k in label for k in ("type of contract", "rodzaj zamówienia", "type")):
+                    result["procedure_type"] = value[:80]
+                elif any(k in label for k in ("deadline", "time limit", "termin")):
+                    result["deadline"] = _parse_date(value)
+                elif any(k in label for k in ("short description", "opis", "subject", "przedmiot")):
+                    result["description"] = value[:300]
+        # Fallback: CPV from raw text
+        if not result["cpv"]:
+            m = re.search(r"\b(7[0-9]\d{6})\b", summary)
+            if m:
+                result["cpv"] = m.group(1)
+    except Exception as exc:
+        log.debug("[TED summary parse] %s", exc)
+    return result
+
+
+def _enrich_bzp_detail(proc_id: str) -> dict:
+    """Fetch extra fields for a BZP notice via the detail API endpoint.
+    Returns an empty dict on any failure."""
+    if not proc_id:
+        return {}
+    try:
+        safe_id = requests.utils.quote(str(proc_id), safe="")
+        url = f"{_BZP_API_BASE}/opi/og/notice/{safe_id}"
+        resp = _get(url, headers=_BZP_HEADERS, timeout=15)
+        ct = resp.headers.get("Content-Type", "")
+        if resp.status_code != 200 or "html" in ct or not resp.content:
+            return {}
+        data = resp.json()
+        raw_val = (
+            data.get("estimatedValueBrutto") or data.get("estimatedValue")
+            or data.get("contractValueBrutto") or data.get("tenderValue")
+        )
+        return {
+            "description": str(
+                data.get("orderSubject") or data.get("description")
+                or data.get("shortDescription") or ""
+            )[:300] or None,
+            "value": _format_value(raw_val),
+            "cpv": str(data.get("mainCpvCode") or data.get("cpvCode") or "").strip() or None,
+            "procedure_type": str(
+                data.get("procedureType") or data.get("orderType")
+                or data.get("procurementMode") or ""
+            ).strip() or None,
+        }
+    except Exception as exc:
+        log.debug("[BZP detail] proc_id=%r: %s", proc_id, exc)
+        return {}
+
+
 # ---------------------------------------------------------------------------
 # Persistence – history tracking
 # ---------------------------------------------------------------------------
@@ -265,6 +350,10 @@ def fetch_ddg(queries: list[str]) -> list[dict]:
                             "entity": "",
                             "publication_date": pub_date,
                             "deadline": None,
+                            "description": None,
+                            "value": None,
+                            "cpv": None,
+                            "procedure_type": None,
                             "url": url,
                             "source": "DuckDuckGo",
                             "sector": _classify_sector(title, ""),
@@ -330,6 +419,7 @@ def _fetch_ted_rss(cpv: str, results: list[dict]) -> None:
         m_ted = re.search(r'/notice/([^/?#]+)', link)
         if m_ted:
             ted_pub_num = m_ted.group(1)
+        ted_details = _parse_ted_summary(summary)
         results.append(
             {
                 "id": _make_id(link),
@@ -337,7 +427,11 @@ def _fetch_ted_rss(cpv: str, results: list[dict]) -> None:
                 "title": title,
                 "entity": entity,
                 "publication_date": pub_date,
-                "deadline": None,
+                "deadline": ted_details.get("deadline"),
+                "description": ted_details.get("description"),
+                "value": ted_details.get("value"),
+                "cpv": ted_details.get("cpv"),
+                "procedure_type": ted_details.get("procedure_type"),
                 "url": link,
                 "source": "TED (EU)",
                 "sector": _classify_sector(title, entity),
@@ -462,6 +556,11 @@ def _extract_bzp_item(item: dict, results: list[dict]) -> None:
         or item.get("deadline")
         or item.get("offerDeadline")
     )
+    # Extract detail fields directly from the API response if present
+    raw_val = (
+        item.get("estimatedValueBrutto") or item.get("estimatedValue")
+        or item.get("contractValueBrutto") or item.get("tenderValue")
+    )
     results.append(
         {
             "id": _make_id(url),
@@ -470,6 +569,16 @@ def _extract_bzp_item(item: dict, results: list[dict]) -> None:
             "entity": entity,
             "publication_date": pub_date,
             "deadline": deadline,
+            "description": str(
+                item.get("orderSubject") or item.get("description")
+                or item.get("shortDescription") or ""
+            )[:300] or None,
+            "value": _format_value(raw_val),
+            "cpv": str(item.get("mainCpvCode") or item.get("cpvCode") or "").strip() or None,
+            "procedure_type": str(
+                item.get("procedureType") or item.get("orderType")
+                or item.get("procurementMode") or ""
+            ).strip() or None,
             "url": url,
             "source": "BZP (ezamowienia.gov.pl)",
             "sector": _classify_sector(title, entity),
@@ -542,6 +651,9 @@ def _pzp_search(term: str, results: list[dict], search_url: str) -> None:
 
         m_pzp = re.search(r'/transakcje/(\d+)', full_url)
         pzp_id = m_pzp.group(1) if m_pzp else None
+        # Try to extract estimated value from the row text
+        m_val = re.search(r'([\d\s]+[,.]\d{2})\s*(?:PLN|zł)', row_text, re.IGNORECASE)
+        pzp_value = _format_value(m_val.group(1)) if m_val else None
         results.append(
             {
                 "id": _make_id(full_url),
@@ -550,6 +662,10 @@ def _pzp_search(term: str, results: list[dict], search_url: str) -> None:
                 "entity": "",
                 "publication_date": pub_date,
                 "deadline": None,
+                "description": None,
+                "value": pzp_value,
+                "cpv": None,
+                "procedure_type": None,
                 "url": full_url,
                 "source": "platformazakupowa.pl",
                 "sector": _classify_sector(title, ""),
@@ -703,6 +819,20 @@ def main() -> None:
         except Exception as exc:
             # One source failing must never abort the whole run
             log.error("[%s] Source failed entirely: %s", label, exc)
+
+    # Enrich BZP tenders with per-notice detail API (fills description/value/cpv/procedure_type)
+    bzp_to_enrich = [
+        t for t in all_tenders
+        if t.get("source") == "BZP (ezamowienia.gov.pl)" and t.get("proc_id")
+        and not any(t.get(k) for k in ("description", "value", "cpv", "procedure_type"))
+    ]
+    if bzp_to_enrich:
+        log.info("Enriching %d BZP tenders with detail API data…", len(bzp_to_enrich))
+        for t in bzp_to_enrich:
+            extra = _enrich_bzp_detail(t["proc_id"])
+            for k, v in extra.items():
+                if v and not t.get(k):
+                    t[k] = v
 
     # Filter to the configurable time window
     before = len(all_tenders)

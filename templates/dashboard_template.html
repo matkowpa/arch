@@ -532,22 +532,35 @@
 <article class="tender-card ${s.cls}" style="background:var(--white); padding:18px 22px 16px 20px;">
   <div style="display:flex; align-items:flex-start; gap:20px;">
     <div style="flex:1; min-width:0;">
-      <div style="display:flex; align-items:center; gap:14px; margin-bottom:9px;">
+
+      <!-- Meta row: sector + source + CPV -->
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:9px; flex-wrap:wrap;">
         <span style="display:inline-flex; align-items:center; gap:5px; font-size:9px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:${s.color};">
           <span style="width:5px; height:5px; border-radius:50%; background:${s.color}; flex-shrink:0; display:inline-block;"></span>
           ${s.label}
         </span>
         <span style="font-size:9px; color:var(--light); letter-spacing:0.08em; text-transform:uppercase;">${sourceText}</span>
+        ${t.cpv ? `<span style="font-size:9px; font-family:'Courier New',Courier,monospace; color:var(--mid); background:var(--paper); padding:1px 6px; border:1px solid var(--border);">CPV&nbsp;${esc(t.cpv)}</span>` : ''}
+        ${t.procedure_type ? `<span style="font-size:9px; color:var(--light); text-transform:uppercase; letter-spacing:0.06em;">${esc(t.procedure_type)}</span>` : ''}
       </div>
+
+      <!-- Title -->
       <h3 style="font-size:14px; font-weight:500; color:var(--dark); line-height:1.5; margin:0 0 6px; word-break:break-word;">${titleHtml}</h3>
+
+      <!-- Entity & identifiers -->
       <p style="font-size:11px; color:var(--mid); margin:0;">
         <span style="font-weight:500;">Zamawiający:</span>
         <span style="margin-left:4px;">${entityHtml}</span>
       </p>
-      ${t.proc_id ? `<p style="font-size:10px; color:var(--mid); margin:4px 0 0;">
+      ${t.proc_id ? `<p style="font-size:10px; color:var(--mid); margin:3px 0 0;">
         <span style="font-weight:500; color:var(--light);">Nr postępowania:</span>
         <span style="margin-left:4px; font-family:'Courier New',Courier,monospace; font-size:10px; color:var(--mid);">${esc(t.proc_id)}</span>
       </p>` : ''}
+
+      <!-- Description -->
+      ${t.description ? `<p style="font-size:11px; color:var(--mid); margin:6px 0 0; line-height:1.5; border-left:2px solid var(--border); padding-left:8px;">${esc(t.description)}</p>` : ''}
+
+      <!-- Dates + value row -->
       <div style="margin-top:11px; padding-top:11px; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; gap:18px;">
         <span style="font-size:10px; color:var(--light);">
           Opublikowano:&nbsp;<span style="color:var(--mid); font-weight:500;">${pub}</span>
@@ -555,7 +568,9 @@
         <span style="font-size:10px; color:var(--light);">
           Termin składania:&nbsp;<span style="color:${soon ? '#b91c1c' : 'var(--mid)'}; font-weight:500;">${dl}</span>${soon ? '&ensp;<span style="font-size:9px; font-weight:600; color:#b91c1c; letter-spacing:0.1em; text-transform:uppercase;">&#x25B2;&nbsp;Wkrótce</span>' : ''}
         </span>
+        ${t.value ? `<span style="font-size:10px; color:var(--light);">Szacowana wartość:&nbsp;<span style="color:var(--mid); font-weight:500;">${esc(t.value)}</span></span>` : ''}
       </div>
+
     </div>
     <div style="flex-shrink:0; padding-top:2px;">
       <a href="${esc(t.url)}" target="_blank" rel="noopener noreferrer" class="btn-open">
