@@ -461,7 +461,11 @@ _TED_SEARCH_FIELDS = [
     "buyer-name", "buyer-city", "buyer-country",
     "description-lot", "description-part", "description-glo",
     "deadline-receipt-tender-date-lot", "deadline-date-lot",
-    "estimated-value-glo", "estimated-value-cur-glo",
+    # Value fields: proc-level estimate (pre-award), lot-level estimate, awarded total
+    "estimated-value-proc", "estimated-value-cur-proc",
+    "estimated-value-lot", "estimated-value-cur-lot",
+    "total-value", "total-value-cur",
+    "estimated-value-glo", "estimated-value-cur-glo",  # fallback
     "classification-cpv", "procedure-type",
 ]
 
@@ -582,17 +586,46 @@ def _extract_ted_item(notice: dict, results: list[dict]) -> None:
 
     proc_type = _ted_multilang(notice.get("procedure-type") or "").capitalize() or None
 
-    val_raw = notice.get("estimated-value-glo")
-    cur_raw = notice.get("estimated-value-cur-glo")
-    value = None
+    # Value: prefer procedure-level estimate, then lot sum, then total (awarded), then global
     value_raw: Optional[float] = None
-    if val_raw is not None:
+    value_cur = "PLN"
+    _ev_proc = notice.get("estimated-value-proc")
+    _ev_lot = notice.get("estimated-value-lot") or []
+    _tv = notice.get("total-value")
+    _ev_glo = notice.get("estimated-value-glo")
+    if _ev_proc is not None:
         try:
-            value_raw = float(val_raw)
+            value_raw = float(_ev_proc)
+            value_cur = str(notice.get("estimated-value-cur-proc") or "PLN")
         except (TypeError, ValueError):
             pass
-        cur = _ted_multilang(cur_raw) if cur_raw else "EUR"
-        value = _format_value(val_raw) or f"{float(val_raw):,.2f} {cur}"
+    if value_raw is None and _ev_lot:
+        try:
+            value_raw = sum(float(v) for v in _ev_lot)
+            cur_list = notice.get("estimated-value-cur-lot") or []
+            value_cur = str(cur_list[0]) if cur_list else "PLN"
+        except (TypeError, ValueError):
+            pass
+    if value_raw is None and _tv is not None:
+        try:
+            value_raw = float(_tv)
+            cur_list = notice.get("total-value-cur") or []
+            value_cur = str(cur_list[0]) if cur_list else "PLN"
+        except (TypeError, ValueError):
+            pass
+    if value_raw is None and _ev_glo is not None:
+        try:
+            value_raw = float(_ev_glo)
+            value_cur = str(_ted_multilang(notice.get("estimated-value-cur-glo") or "") or "EUR")
+        except (TypeError, ValueError):
+            pass
+    value: Optional[str] = None
+    if value_raw is not None:
+        formatted = _format_value(value_raw)
+        if value_cur not in ("PLN", ""):
+            value = (formatted or f"{value_raw:,.2f}").replace(" PLN", "") + f" {value_cur}"
+        else:
+            value = formatted
 
     results.append({
         "id": _make_id(url),
